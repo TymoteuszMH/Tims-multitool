@@ -16,12 +16,22 @@ public class UserService {
     }
 
     public User addUser (User user){
+        if(userRepo.existsByUsername(user.getUsername())){
+            throw new RuntimeException("Username already exists");
+        }
         return userRepo.save(user);
     }
-    public User findOneUsernameAndPassword(String username, String password){
-        return userRepo.findUserByUsernameAndPassword(username, password).orElseThrow(() -> new UserNotFoundException("not-found"));
+    public User Login(User user){
+        if( userRepo.existsByUsername(user.getUsername())
+                && userRepo.existsByPassword(user.getPassword())){
+            return userRepo.findByUsername(user.getUsername());
+        }
+        throw new RuntimeException("Username or password are incorrect");
     }
     public User updateUser(User user){
+        if(userRepo.existsByUsername(user.getUsername())){
+            throw new RuntimeException("Username already exists");
+        }
         return userRepo.save(user);
     }
 
