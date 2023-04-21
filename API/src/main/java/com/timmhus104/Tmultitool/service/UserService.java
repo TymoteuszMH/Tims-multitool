@@ -17,24 +17,21 @@ public class UserService {
     public UserService(UserRepo userRepo) {
         this.userRepo = userRepo;
     }
-
-    public User findUserByUuid(UUID uuid){
-        return userRepo.findByUuid(uuid);
-    }
-
+    //adding user, if username already exists, returning error
     public User addUser (User user){
         if(userRepo.existsByUsername(user.getUsername())){
             throw new RuntimeException("Username already exists");
         }
         return userRepo.save(user);
     }
+    //logging in if username and password are correct
     public User Login(User user){
-        if( userRepo.existsByUsernameAndPassword(user.getUsername(), user.getPassword())
-                || userRepo.existsByEmailAndPassword(user.getEmail(), user.getPassword())){
+        if( userRepo.existsByUsernameAndPassword(user.getUsername(), user.getPassword())){
             return userRepo.findByUsername(user.getUsername());
         }
         throw new UserNotFoundException("Username or password are incorrect");
     }
+    //update checks if any data is null and replacing it
     public User updateUser(User user, UUID uuid){
         if(userRepo.existsByUsernameAndUuid(user.getUsername(), uuid)){
             throw new RuntimeException("Username already exists");
@@ -43,9 +40,6 @@ public class UserService {
         user.setId(oldUser.getId());
         if (user.getUsername() == null){
             user.setUsername(oldUser.getUsername());
-        }
-        if (user.getEmail() == null){
-            user.setEmail(oldUser.getEmail());
         }
         if (user.getPassword() == null){
             user.setPassword(oldUser.getPassword());

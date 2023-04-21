@@ -7,12 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
-
 public interface FileRepo extends JpaRepository<File, Long> {
-
+    //all speaks for itself
     Optional<File> findFileById(Long id);
-    List<File> findFileByType(Type type);
+    List<File> findFileByTypeAndUser(Type type, Long userId);
     void deleteFileById(Long id);
 }

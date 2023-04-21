@@ -4,16 +4,15 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.timmhus104.Tmultitool.enumeration.Type;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.UUID;
+
 
 //Files modal
 @Entity
-@DynamicUpdate
 public class File implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +25,7 @@ public class File implements Serializable {
     private Type type;
     private String title;
     private String content;
+    private LocalDate date;
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -36,11 +36,12 @@ public class File implements Serializable {
 
     public File(){}
 
-    public File(User user, Type type, String title,  String content, LocalDateTime createdAt, LocalDateTime updatedAt){
+    public File(User user, Type type, String title,  String content, LocalDate date, LocalDateTime createdAt, LocalDateTime updatedAt){
         this.user = user;
         this.type = type;
         this.title = title;
         this.content = content;
+        this.date = date;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -78,6 +79,13 @@ public class File implements Serializable {
     }
     public void setContent(String content){
         this.content = content;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public LocalDateTime getCreatedAt() {

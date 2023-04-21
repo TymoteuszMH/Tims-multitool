@@ -17,6 +17,7 @@ import java.util.UUID;
 @Service
 public class FileService {
     private final FileRepo fileRepo;
+    //user repo is for user authentication
     private final UserRepo userRepo;
 
     @Autowired
@@ -25,29 +26,33 @@ public class FileService {
         this.userRepo = userRepo;
     }
 
-
-    public File addFile (File file, UUID userId){
-        User user = getUser(userId);
+    //adding file needs uuid from logged user
+    public File addFile (File file, UUID userUuid){
+        User user = getUser(userUuid);
         file.setUser(user);
         user.getFiles().add(file);
         return fileRepo.save(file);
     }
-
+    //update file doesn't need all null checks 'cause all the data will be passed anyway
     public File updateFile (File file, Long id){
         file.setId(id);
         return fileRepo.save(file);
     }
 
+    //finding file by id
     public File findFileById(Long id){
         return fileRepo.findFileById(id).orElseThrow(() -> new FileNotFoundException("File not found"));
     }
-    public List<File> findFileByTypeAndUser(Type type){
-        return fileRepo.findFileByType(type);
+    //getting all files by type attached to user
+    public List<File> findFileByTypeAndUser(Type type, UUID userUuid){
+        User user = getUser(userUuid);
+        return fileRepo.findFileByTypeAndUser(type, user.getId());
     }
     public void deleteFile(Long id){
         fileRepo.deleteFileById(id);
     }
 
+    //function to get user by uuid and returning him if exists
     private User getUser(UUID userUuid) {
         User user = userRepo.findByUuid(userUuid);
         Optional<User> owner = userRepo.findById(user.getId());
