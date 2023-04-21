@@ -1,11 +1,14 @@
 package com.timmhus104.Tmultitool;
 
+import com.timmhus104.Tmultitool.exception.UserNotFoundException;
 import com.timmhus104.Tmultitool.model.User;
 import com.timmhus104.Tmultitool.service.UserService;
 import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping ("/user")
@@ -28,16 +31,16 @@ public class UserResource {
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<User> updateUser(@RequestBody User user){
-        User upUser = userService.updateUser(user);
+    @PutMapping("/update/{uuid}")
+    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable("uuid") UUID uuid){
+        User upUser = userService.updateUser(user, uuid);
         return new ResponseEntity<>(upUser, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/{uuid}")
     @Transactional
-    public ResponseEntity<?> deleteUser(@PathVariable("id") Long id){
-        userService.deleteUser(id);
+    public ResponseEntity<?> deleteUser(@PathVariable("uuid") UUID uuid){
+        userService.deleteUser(uuid);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

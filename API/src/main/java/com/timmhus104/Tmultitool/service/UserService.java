@@ -6,6 +6,9 @@ import com.timmhus104.Tmultitool.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 public class UserService {
     private final UserRepo userRepo;
@@ -15,6 +18,10 @@ public class UserService {
         this.userRepo = userRepo;
     }
 
+    public User findUserByUuid(UUID uuid){
+        return userRepo.findByUuid(uuid);
+    }
+
     public User addUser (User user){
         if(userRepo.existsByUsername(user.getUsername())){
             throw new RuntimeException("Username already exists");
@@ -22,20 +29,31 @@ public class UserService {
         return userRepo.save(user);
     }
     public User Login(User user){
-        if( userRepo.existsByUsername(user.getUsername())
-                && userRepo.existsByPassword(user.getPassword())){
+        if( userRepo.existsByUsernameAndPassword(user.getUsername(), user.getPassword())
+                || userRepo.existsByEmailAndPassword(user.getEmail(), user.getPassword())){
             return userRepo.findByUsername(user.getUsername());
         }
-        throw new RuntimeException("Username or password are incorrect");
+        throw new UserNotFoundException("Username or password are incorrect");
     }
-    public User updateUser(User user){
-        if(userRepo.existsByUsername(user.getUsername())){
+    public User updateUser(User user, UUID uuid){
+        if(userRepo.existsByUsernameAndUuid(user.getUsername(), uuid)){
             throw new RuntimeException("Username already exists");
+        }
+        User oldUser = userRepo.findByUuid(uuid);
+        user.setId(oldUser.getId());
+        if (user.getUsername() == null){
+            user.setUsername(oldUser.getUsername());
+        }
+        if (user.getEmail() == null){
+            user.setEmail(oldUser.getEmail());
+        }
+        if (user.getPassword() == null){
+            user.setPassword(oldUser.getPassword());
         }
         return userRepo.save(user);
     }
 
-    public void deleteUser(Long id){
-        userRepo.deleteUserById(id);
+    public void deleteUser(UUID uuid){
+        userRepo.deleteUserByUuid(uuid);
     }
 }
