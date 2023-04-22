@@ -1,0 +1,22 @@
+{
+    "login":{
+        "title":{
+            "signin": "Sign in",
+            "signup": "Sign up",
+            "update": "Update user"
+        },
+        "errors":{
+            "existnt": "User doesn't exist!",
+            "occupied": "Username already exist!",
+            "success": "Username added successfully"
+        },
+        "welcome": "Welcome",
+        "username": "Username:",
+        "password": "Password:",
+        "submit": "Submit",
+        "changemess":"Don't have an account?",
+        "change": "Sign up!",
+        "changebackmess": "Already have an account?",
+        "changeback": "Sign in!"
+    }
+}

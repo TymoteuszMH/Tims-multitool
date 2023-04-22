@@ -1,0 +1,9 @@
+<form [formGroup]="userForm" (ngSubmit)="formSubmit()" class="form-gruop row" translate>
+    <label class="col-form-label" for="username">{{ 'login.username' | translate }}</label>
+    <input class="form-control" id="username" type="text" formControlName="username">
+  
+    <label class="col-form-label" for="password">{{ 'login.password' | translate }}</label>
+    <input class="form-control" id="password" type="password" formControlName="password">
+
+    <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid">{{ 'login.submit' | translate }}</button>
+</form>

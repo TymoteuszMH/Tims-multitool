@@ -5,8 +5,8 @@ import com.timmhus104.Tmultitool.model.User;
 import com.timmhus104.Tmultitool.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @Service

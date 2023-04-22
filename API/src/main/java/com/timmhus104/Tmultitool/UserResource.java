@@ -21,7 +21,7 @@ public class UserResource {
     }
 
     //api point for login
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<User> getUserByUsernameAndPassword(@RequestBody User user){
         User login = userService.Login(user);
         return new ResponseEntity<>(login, HttpStatus.OK);

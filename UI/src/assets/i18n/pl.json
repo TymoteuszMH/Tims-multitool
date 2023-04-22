@@ -1,0 +1,22 @@
+{
+    "login":{
+        "title":{
+            "signin": "Logowanie",
+            "signup": "Rejestracja",
+            "update": "Zmiana danych użytkownika"
+        },
+        "errors":{
+            "existnt": "Użytkownik nie istnieje!",
+            "occupied": "Nazwa jest już zajęta!",
+            "success": "Użytkownik został dodany"
+        },
+        "welcome": "Witaj",
+        "username": "Nazwa użytkownika:",
+        "password": "Hasło:",
+        "submit": "Zatwierdź",
+        "changemess":"Nie masz konta?",
+        "change": "Zarejestruj się!",
+        "changebackmess": "Masz już konto?",
+        "changeback": "Zaloguj się!"
+    }
+}

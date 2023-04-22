@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-//controler for files have useruuid in it for authentication and safety reasons
+//controler for files have user's uuid in it for authentication and safety reasons
 @RestController
 @RequestMapping("/{userUuid}/file")
 public class FileResource {

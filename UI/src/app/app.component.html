@@ -1,0 +1,8 @@
+<ng4-loading-spinner></ng4-loading-spinner>
+<router-outlet></router-outlet>
+<div class="btn-group languageChange" role="group">
+    <input class="btn-check" type="radio" name="languageSwitcher" id="pl" value="pl" [checked]="checked.pl">
+    <label class="btn btn-outline-primary" for="pl" (click)="useLanguage('pl')">pl</label>
+    <input class="btn-check" type="radio" name="languageSwitcher" id="en" value="en" [checked]="checked.en">
+    <label class="btn btn-outline-primary" for="en" (click)="useLanguage('en')">en</label>
+</div>

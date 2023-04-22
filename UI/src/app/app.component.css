@@ -1,0 +1,9 @@
+.languageChange{
+    position: fixed;
+    bottom: 0;
+    
+}
+.btn{
+    border-radius:0;
+    border-top-right-radius: 5px;
+}
