@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
@@ -11,11 +10,17 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-form.component.css'],
 })
 export class UserFormComponent {
+  /*
+  @done: sending status to parent login site
+  @uuid: uuid for changing users data
+  @data: data for form
+  @edit: checks if it should be edit form or not
+  @login: checks if it should be login form or not
+  @userForm: form fields
+  */
   @Output() done = new EventEmitter<string>;
-  @Output() mess = new EventEmitter<string>;
   @Input() title:any;
   @Input() uuid = "";
-  @Input() editType = "";
   @Input() data:login = {username: "", password: ""};
   @Input() edit = false;
   @Input() login = false;
@@ -28,22 +33,26 @@ export class UserFormComponent {
   constructor(private fb: FormBuilder,
               private user: UserService,
               private spinnerService: Ng4LoadingSpinnerService) { }
-
+  /*
+  @formSubmit: getting data and checking what form is submitted
+  @signIn: sending data to login api, if data is correct, success is send to parent component, data is stored in localStorage, else error is send to parent component
+  @signUp: sending data to add user api, if data is correct, success is send to parent component, else error is send to parent component
+  @editUser: sending data to edit user api, if data is correct, success is send to parent component, else error is send to parent component
+  */
   formSubmit(){
-    var uuid = this.uuid;
     var val = {username: this.userForm.value.username,
                password: this.userForm.value.password }
     if(this.login){
-      this.SignIn(val);
+      this.signIn(val);
     }
     else if(this.edit){
-      this.editUser(val, uuid);
+      this.editUser(val);
     }else{
-      this.SignUp(val);
+      this.signUp(val);
     }
   }
 
-  SignIn(val: any){
+  signIn(val: any){
     this.done.emit("");
     this.user.signIn(val).subscribe({
       next: (res:any) => {
@@ -58,7 +67,7 @@ export class UserFormComponent {
     });
   }
 
-  SignUp(val: any){
+  signUp(val: any){
     this.user.signUp(val).subscribe({
       next: () => {
         this.done.emit("success");
@@ -69,8 +78,8 @@ export class UserFormComponent {
     });
   }
 
-  editUser(val: any, uuid:string){
-    this.user.updateUser(val, uuid).subscribe({
+  editUser(val: any){
+    this.user.updateUser(val).subscribe({
       next: () => {
         this.done.emit("success");
       },

@@ -6,10 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  /*
+  @error: showing error message
+  @success: showing success message
+  @signn: checks which form should be displayed
+  */
   error = false;
   success = false
   signin = true;
-
+  /*
+  @changeForm: changing form to sign in or sign up
+  @getStatus: checking if user exists if not showing success messange or logging in, else showing error messange
+  */
   changeForm(change:boolean) {
     this.error=false;
     this.success = false;

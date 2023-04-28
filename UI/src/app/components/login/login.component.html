@@ -1,19 +1,30 @@
+<!--
+    all textes are in assets/i18n/(en.json or pl.json)
+-->
 <div class="container position-absolute top-50 start-50 translate-middle">
     <div class="card mx-auto" style="max-width: 18rem;">
         <div class="card-body mx-auto" translate>
             <div class="card-title text-center">
+                <!--
+                    form titles
+                -->
                 <h1 class="text-center">{{ 'login.welcome' | translate }}</h1>
                 <h4 *ngIf="signin">{{ 'login.title.signin' | translate }}</h4>
                 <h4 *ngIf="!signin">{{ 'login.title.signup' | translate }}</h4>
             </div>
             <div class="alert alert-success" *ngIf="success">{{'login.errors.success' | translate}}</div>
-            
+            <!--
+                form for sign in
+            -->
             <div *ngIf="signin">
                 <div class="alert alert-danger" *ngIf="error">{{'login.errors.existnt' | translate}}</div>
                 <app-user-form [login] = true (done)="getStatus($event)"></app-user-form>
                 <p class = "changemess">{{ 'login.changemess' | translate }}</p>
                 <a (click)="changeForm(true)" class="link">{{ 'login.change' | translate }}</a>
             </div>
+            <!--
+                form for sign in
+            -->
             <div *ngIf="!signin">
                 <div class="alert alert-danger" *ngIf="error">{{'login.errors.occupied' | translate}}</div>
                 <app-user-form (done)="getStatus($event)"></app-user-form>
