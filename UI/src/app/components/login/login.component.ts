@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ChangeService } from 'src/app/services/change.service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +16,9 @@ export class LoginComponent {
   error = false;
   success = false
   signin = true;
+
+  constructor(private changeroute: ChangeService){}
+
   /*
   @changeForm: changing form to sign in or sign up
   @getStatus: checking if user exists if not showing success messange or logging in, else showing error messange
@@ -32,7 +37,7 @@ export class LoginComponent {
     this.success = false;
     if(res == 'success'){
       if(this.signin){
-        localStorage.setItem('logged', '1');
+        this.changeroute.change(true);
       }else{
         this.signin = true;
         this.success = true;

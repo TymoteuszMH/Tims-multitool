@@ -2,12 +2,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { login } from 'src/app/interfaces/login';
+import { LoginDataService } from 'src/app/services/logindata.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css'],
+  providers: [Ng4LoadingSpinnerService]
 })
 export class UserFormComponent {
   /*
@@ -57,9 +59,7 @@ export class UserFormComponent {
     this.user.signIn(val).subscribe({
       next: (res:any) => {
         this.done.emit("success");
-        localStorage.setItem('username', res.username);
-        localStorage.setItem('uuid', res.uuid);
-        localStorage.setItem('password', res.password);
+        LoginDataService.login(res.username, res.password, res.uuid);
       },
       error: () => {
         this.done.emit("error");

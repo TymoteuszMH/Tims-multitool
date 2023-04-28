@@ -14,13 +14,17 @@ import { LoginComponent } from './components/login/login.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserFormComponent,
     FileFormComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

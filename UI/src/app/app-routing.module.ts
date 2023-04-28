@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 
 export const notlogged: Routes = [
   {path:'', component:LoginComponent},
   {path: '**', redirectTo: ''}
 ];
 export const logged: Routes = [
-  {path:'', component:LoginComponent},
+  {path:'', component:HomeComponent},
   {path: '**', redirectTo: ''}
 ];
 //checking if user is logged, changing site's route

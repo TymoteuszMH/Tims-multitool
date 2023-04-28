@@ -1,4 +1,4 @@
-<ng4-loading-spinner></ng4-loading-spinner>
+<app-navbar *ngIf="islogged"></app-navbar>
 <router-outlet></router-outlet>
 <div class="btn-group languageChange" role="group">
     <input class="btn-check" type="radio" name="languageSwitcher" id="pl" value="pl" [checked]="checked.pl">

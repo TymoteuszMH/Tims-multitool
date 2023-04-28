@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { LoginDataService } from './services/logindata.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,8 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 })
 export class AppComponent {
   title = 'UI';
+  islogged = false;
+  
   /*
   @checked: checking setted language for site
   @language: getting checked language if language is set if it's not set returns english as default
@@ -31,5 +34,13 @@ export class AppComponent {
   useLanguage(language: string): void {
     this.translate.use(language);
     localStorage.setItem('language', language)
+  }
+
+  ngDoCheck(){
+    LoginDataService.check();
+    if(localStorage.getItem('logged')=='1')
+      this.islogged = true;
+    else
+      this.islogged = false;
   }
 }

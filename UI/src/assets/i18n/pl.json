@@ -18,5 +18,10 @@
         "change": "Zarejestruj się!",
         "changebackmess": "Masz już konto?",
         "changeback": "Zaloguj się!"
+    },
+    "navbar":{
+        "title":"Tim's multitool",
+        "edit":"Edytuj",
+        "logout":"Wyloguj"
     }
 }
