@@ -13,6 +13,7 @@
         "welcome": "Witaj",
         "username": "Nazwa użytkownika:",
         "password": "Hasło:",
+        "keep": "Zostań zalogowany",
         "submit": "Zatwierdź",
         "changemess":"Nie masz konta?",
         "change": "Zarejestruj się!",
@@ -21,8 +22,14 @@
     },
     "navbar":{
         "title":"Tim's multitool",
-        "sites":"Strony",
+        "home":"Dom",
         "edit":"Edytuj",
         "logout":"Wyloguj"
+    },
+    "confirm":{
+        "confirm":"Potwierdź",
+        "ays":"Jesteś pewien?",
+        "yes":"Tak",
+        "no":"Nie"
     }
 }

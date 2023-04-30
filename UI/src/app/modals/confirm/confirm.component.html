@@ -1,0 +1,17 @@
+<div class="card" translate>
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="exampleModalLabel">{{ 'confirm.confirm' | translate }}</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-gruop row">
+        <div class="text-center">{{ 'confirm.ays' | translate }}</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="mx-auto">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" style="margin-right: 10px" (click)="closeModal()">{{ 'confirm.no' | translate }}</button>
+        <button type="button" class="btn btn-danger" (click)="emitAnwser()">{{ 'confirm.yes' | translate }}</button>
+      </div>
+    </div>
+</div>

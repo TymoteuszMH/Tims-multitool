@@ -14,7 +14,7 @@ export class TodoService {
   @updateTodoList: updating existing todo list by it's id
   @deleteTodoList: deleting todo list by it's id
   */
-  readonly uuid = localStorage.getItem('uuid')
+  readonly uuid = localStorage.getItem('uuid') || sessionStorage.getItem('uuid');
   readonly url = api.url + this.uuid + "/todoList/";
 
   constructor(private http:HttpClient) { }

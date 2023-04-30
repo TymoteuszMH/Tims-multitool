@@ -5,5 +5,10 @@
     <label class="col-form-label" for="password">{{ 'login.password' | translate }}</label>
     <input class="form-control" id="password" type="password" formControlName="password">
 
+    <div class="form-check" *ngIf="login">
+        <input class="form-check-input" id="check" type="checkbox" (click)="keep($event)"> 
+        <label class="form-check-label" for="check">{{ 'login.keep' | translate }}</label>
+    </div>
+
     <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid">{{ 'login.submit' | translate }}</button>
 </form>

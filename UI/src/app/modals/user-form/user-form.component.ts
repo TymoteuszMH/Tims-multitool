@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { login } from 'src/app/interfaces/login';
 import { LoginDataService } from 'src/app/services/logindata.service';
@@ -19,6 +19,7 @@ export class UserFormComponent {
   @login: checks if it should be login form or not
   @userForm: form fields
   */
+  keepLogged:boolean = false;
   @Output() done = new EventEmitter<string>;
   @Input() title:any;
   @Input() uuid = "";
@@ -35,11 +36,15 @@ export class UserFormComponent {
               private user: UserService,
               private spinner: NgxSpinnerService) { }
   /*
+  @keep: checking if user want to have his data stored on device
   @formSubmit: getting data and checking what form is submitted
   @signIn: sending data to login api, if data is correct, success is send to parent component, data is stored in localStorage, else error is send to parent component
   @signUp: sending data to add user api, if data is correct, success is send to parent component, else error is send to parent component
   @editUser: sending data to edit user api, if data is correct, success is send to parent component, else error is send to parent component
   */
+  keep(event:any){
+    this.keepLogged = event.target.checked;
+  }
   formSubmit(){
     this.spinner.show();
     var val = {username: this.userForm.value.username,
@@ -59,7 +64,8 @@ export class UserFormComponent {
     this.user.signIn(val).subscribe({
       next: (res:any) => {
         this.done.emit("success");
-        LoginDataService.login(res.username, res.password, res.uuid);
+        console.log(this.keepLogged, 'Value of checkbox')
+        LoginDataService.login(res.username, res.uuid, this.keepLogged);
         this.spinner.hide();
       },
       error: () => {

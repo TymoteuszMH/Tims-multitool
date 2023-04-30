@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FileFormComponent } from './file-form.component';
+import { ConfirmComponent } from './confirm.component';
 
-describe('FileFormComponent', () => {
-  let component: FileFormComponent;
-  let fixture: ComponentFixture<FileFormComponent>;
+describe('ConfirmComponent', () => {
+  let component: ConfirmComponent;
+  let fixture: ComponentFixture<ConfirmComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FileFormComponent ]
+      declarations: [ ConfirmComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FileFormComponent);
+    fixture = TestBed.createComponent(ConfirmComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

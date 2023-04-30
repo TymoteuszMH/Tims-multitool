@@ -13,7 +13,7 @@ export class UserService {
   @updateUser: updates user by uuid
   @deleteUser: deletes user by uuid
   */
-  readonly uuid = localStorage.getItem('uuid')
+  readonly uuid = localStorage.getItem('uuid') || sessionStorage.getItem('uuid');
   readonly url = api.url + "user/";
 
   constructor(private http:HttpClient) { }

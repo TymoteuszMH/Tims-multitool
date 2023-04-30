@@ -13,7 +13,7 @@ export const logged: Routes = [
 ];
 //checking if user is logged, changing site's route
 function CheckLog(){
-  if(localStorage.getItem('logged')=='1'){
+  if(localStorage.getItem('logged')=='1' || sessionStorage.getItem('logged')=='1'){
     return logged;
   }else{
     return notlogged;

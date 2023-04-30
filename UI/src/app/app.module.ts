@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserFormComponent } from './modals/user-form/user-form.component';
-import { FileFormComponent } from './modals/file-form/file-form.component';
-import { FileService } from './services/file.service';
 import { UserService } from './services/api/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
@@ -17,15 +15,19 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConfirmComponent } from './modals/confirm/confirm.component';
+import { EventService } from './services/api/event.service';
+import { NoteService } from './services/api/note.service';
+import { TodoService } from './services/api/todo.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserFormComponent,
-    FileFormComponent,
     LoginComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       },
     }),
   ],
-  providers: [FileService, UserService],
+  providers: [UserService, EventService, NoteService, TodoService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

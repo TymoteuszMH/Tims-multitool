@@ -9,12 +9,12 @@ import { api } from 'src/api';
 export class EventService {
   /* 
   @getEvents: getting all user's events
-  @getEventById: getting specific file by it's id
-  @addEvent: adding new file
+  @getEventById: getting specific event by it's id
+  @addEvent: adding new event
   @updateEvent: updating existing event by it's id
   @deleteEvent: deleting event by it's id
   */
-  readonly uuid = localStorage.getItem('uuid')
+  readonly uuid = localStorage.getItem('uuid') || sessionStorage.getItem('uuid');
   readonly url = api.url + this.uuid + "/event/";
 
   constructor(private http:HttpClient) { }

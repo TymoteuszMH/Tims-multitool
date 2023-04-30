@@ -14,7 +14,7 @@ export class NoteService {
   @updateNote: updating existing note by it's id
   @deleteNote: deleting note by it's id
   */
-  readonly uuid = localStorage.getItem('uuid')
+  readonly uuid = localStorage.getItem('uuid') || sessionStorage.getItem('uuid');
   readonly url = api.url + this.uuid + "/note/";
 
   constructor(private http:HttpClient) { }

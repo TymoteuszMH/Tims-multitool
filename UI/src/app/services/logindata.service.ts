@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,23 +11,32 @@ export class LoginDataService {
 
 
   static check(){
-    LoginDataService.logged = localStorage.getItem('logged');
-    LoginDataService.uuid = localStorage.getItem('uuid');
-    LoginDataService.username = localStorage.getItem('username');
-    LoginDataService.password = localStorage.getItem('password');
+    LoginDataService.logged = localStorage.getItem('logged') || sessionStorage.getItem('logged');
+    LoginDataService.uuid = localStorage.getItem('uuid') || sessionStorage.getItem('uuid');
+    LoginDataService.username = localStorage.getItem('username') || sessionStorage.getItem('username');
+    LoginDataService.password = localStorage.getItem('password') || sessionStorage.getItem('password');
   }
-  static login(username:string, password:string, uuid:string){
-    localStorage.setItem('username', username);
-    localStorage.setItem('password', password);
-    localStorage.setItem('uuid', uuid);
-    localStorage.setItem('logged', '1');
-    LoginDataService.check();
+  static login(username:string, uuid:string, keep:boolean){
+    if(keep){
+      localStorage.setItem('username', username);
+      localStorage.setItem('uuid', uuid);
+      localStorage.setItem('logged', '1');
+      LoginDataService.check();
+    }else{
+      sessionStorage.setItem('username', username);
+      sessionStorage.setItem('uuid', uuid);
+      sessionStorage.setItem('logged', '1');
+      LoginDataService.check();
+    }
+
   }
   static logout(){
     localStorage.setItem('username','');
-    localStorage.setItem('password','');
     localStorage.setItem('uuid','0');
     localStorage.setItem('logged','0');
+    sessionStorage.setItem('username','');
+    sessionStorage.setItem('uuid','0');
+    sessionStorage.setItem('logged','0');
     LoginDataService.check();
   }
 }
