@@ -24,7 +24,6 @@ export class UserService {
   else it returns error
   */
   signIn(val:any){
-    console.log(val)
     return this.http.post(this.url + 'login', val);
   }
   /*
@@ -39,7 +38,7 @@ export class UserService {
   request can take password or username, missing value will be added on api
   */
   updateUser(val:any){
-    return this.http.post(this.url + 'update/' + this.uuid, val);
+    return this.http.put(this.url + 'update/' + this.uuid, val);
   }
   /*
   delete user needs uuid for deleting current user

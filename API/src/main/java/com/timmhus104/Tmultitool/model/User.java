@@ -1,6 +1,7 @@
 package com.timmhus104.Tmultitool.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.timmhus104.Tmultitool.model.Todo.TodoList;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -23,13 +24,23 @@ public class User implements Serializable {
     //reference from file modal, after removing user, all his files will be deleted
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private List<File> files = new ArrayList<>();
+    private List<Note> notes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<TodoList> todos = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Event> events = new ArrayList<>();
     public User(){}
 
-    public User(String username, String password, List<File> files){
+    public User(String username, String password, List<Note> notes, List<TodoList> todos, List<Event> events){
         this.username = username;
         this.password = password;
-        this.files = files;
+        this.notes = notes;
+        this.todos = todos;
+        this.events = events;
     }
 
     //setters and getters
@@ -61,10 +72,24 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public List<File> getFiles(){
-        return files;
+    public List<Note> getNotes(){
+        return notes;
     }
-    public void setFiles(List<File> files){
-        this.files = files;
+    public void setNotes(List<Note> notes){
+        this.notes = notes;
+    }
+
+    public List<TodoList> getTodos() {
+        return todos;
+    }
+    public void setTodos(List<TodoList> todos) {
+        this.todos = todos;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 }
