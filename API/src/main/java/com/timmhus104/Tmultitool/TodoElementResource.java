@@ -41,7 +41,7 @@ public class TodoElementResource {
     }
 
     //changing element's status
-    @PutMapping("/change/{id}/{status}")
+    @GetMapping("/change/{id}/{status}")
     public ResponseEntity<TodoElement> changeStatus(@PathVariable("status") String status, @PathVariable("id") Long id) {
         TodoElement newTodoElement = todoElementService.changeStatus(id, status.equals("1") ? Status.DONE:Status.UNDONE);
         return new ResponseEntity<>(newTodoElement, HttpStatus.CREATED);

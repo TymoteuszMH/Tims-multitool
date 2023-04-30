@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { LoginDataService } from './services/logindata.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [Ng4LoadingSpinnerService]
 })
 export class AppComponent {
   title = 'UI';

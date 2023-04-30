@@ -1,15 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { login } from 'src/app/interfaces/login';
 import { LoginDataService } from 'src/app/services/logindata.service';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/api/user.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css'],
-  providers: [Ng4LoadingSpinnerService]
 })
 export class UserFormComponent {
   /*
@@ -34,7 +33,7 @@ export class UserFormComponent {
 
   constructor(private fb: FormBuilder,
               private user: UserService,
-              private spinnerService: Ng4LoadingSpinnerService) { }
+              private spinner: NgxSpinnerService) { }
   /*
   @formSubmit: getting data and checking what form is submitted
   @signIn: sending data to login api, if data is correct, success is send to parent component, data is stored in localStorage, else error is send to parent component
@@ -42,6 +41,7 @@ export class UserFormComponent {
   @editUser: sending data to edit user api, if data is correct, success is send to parent component, else error is send to parent component
   */
   formSubmit(){
+    this.spinner.show();
     var val = {username: this.userForm.value.username,
                password: this.userForm.value.password }
     if(this.login){
@@ -60,9 +60,11 @@ export class UserFormComponent {
       next: (res:any) => {
         this.done.emit("success");
         LoginDataService.login(res.username, res.password, res.uuid);
+        this.spinner.hide();
       },
       error: () => {
         this.done.emit("error");
+        this.spinner.hide();
       }
     });
   }
@@ -71,9 +73,11 @@ export class UserFormComponent {
     this.user.signUp(val).subscribe({
       next: () => {
         this.done.emit("success");
+        this.spinner.hide();
       },
       error: () => {
         this.done.emit("error");
+        this.spinner.hide();
       }
     });
   }
@@ -82,9 +86,11 @@ export class UserFormComponent {
     this.user.updateUser(val).subscribe({
       next: () => {
         this.done.emit("success");
+        this.spinner.hide();
       },
       error: () => {
         this.done.emit("error");
+        this.spinner.hide();
       }
     });
   }
