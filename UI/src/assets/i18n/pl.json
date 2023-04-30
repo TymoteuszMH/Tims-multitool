@@ -21,6 +21,7 @@
     },
     "navbar":{
         "title":"Tim's multitool",
+        "sites":"Strony",
         "edit":"Edytuj",
         "logout":"Wyloguj"
     }
