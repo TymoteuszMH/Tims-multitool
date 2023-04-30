@@ -1,11 +1,10 @@
 package com.timmhus104.Tmultitool.service;
 
-import com.timmhus104.Tmultitool.enumeration.Type;
 import com.timmhus104.Tmultitool.exception.FileNotFoundException;
 import com.timmhus104.Tmultitool.exception.UserNotFoundException;
-import com.timmhus104.Tmultitool.model.File;
+import com.timmhus104.Tmultitool.model.Note;
 import com.timmhus104.Tmultitool.model.User;
-import com.timmhus104.Tmultitool.repo.FileRepo;
+import com.timmhus104.Tmultitool.repo.NoteRepo;
 import com.timmhus104.Tmultitool.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,41 +14,41 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class FileService {
-    private final FileRepo fileRepo;
+public class NoteService {
+    private final NoteRepo noteRepo;
     //user repo is for user authentication
     private final UserRepo userRepo;
 
     @Autowired
-    public FileService(FileRepo fileRepo, UserRepo userRepo) {
-        this.fileRepo = fileRepo;
+    public NoteService(NoteRepo noteRepo, UserRepo userRepo) {
+        this.noteRepo = noteRepo;
         this.userRepo = userRepo;
     }
 
-    //adding file needs uuid from logged user
-    public File addFile (File file, UUID userUuid){
+    //adding note needs uuid from logged user
+    public Note addNote (Note note, UUID userUuid){
         User user = getUser(userUuid);
-        file.setUser(user);
-        user.getFiles().add(file);
-        return fileRepo.save(file);
+        note.setUser(user);
+        user.getNotes().add(note);
+        return noteRepo.save(note);
     }
-    //update file doesn't need all null checks 'cause all the data will be passed anyway
-    public File updateFile (File file, Long id){
-        file.setId(id);
-        return fileRepo.save(file);
+    //update note doesn't need all null checks 'cause all the data will be passed anyway
+    public Note updateNote (Note note, Long id){
+        note.setId(id);
+        return noteRepo.save(note);
     }
 
     //finding file by id
-    public File findFileById(Long id){
-        return fileRepo.findFileById(id).orElseThrow(() -> new FileNotFoundException("File not found"));
+    public Note findNoteById(Long id){
+        return noteRepo.findNoteById(id).orElseThrow(() -> new FileNotFoundException("File not found"));
     }
     //getting all files by type attached to user
-    public List<File> findFileByTypeAndUser(Type type, UUID userUuid){
+    public List<Note> findNoteByUser(UUID userUuid){
         User user = getUser(userUuid);
-        return fileRepo.findFileByTypeAndUser(type, user.getId());
+        return noteRepo.findNoteByUser(user.getId());
     }
-    public void deleteFile(Long id){
-        fileRepo.deleteFileById(id);
+    public void deleteNote(Long id){
+        noteRepo.deleteNoteById(id);
     }
 
     //function to get user by uuid and returning him if exists
@@ -60,6 +59,5 @@ public class FileService {
             return owner.get();
         }
         throw new UserNotFoundException("User not found!");
-
     }
 }
