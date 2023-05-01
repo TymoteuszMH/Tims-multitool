@@ -1,0 +1,14 @@
+<div class="container" translate> 
+    <h1 class="input-group input-group-lg">
+        <input type="text" class="form-control" style="border: 0;" [(ngModel)]="note.title" (change)="save(note)" placeholder="{{'note.non-title' | translate}}">
+    </h1>
+    <hr>
+    <div class="input-group input-group-sm">
+        <textarea class="form-control"  style="border: 0;" rows="5" [(ngModel)]="note.content" (change)="save(note)"></textarea>
+    </div>
+    <hr>
+    <div class="text-end" style="color: lightgray;" >
+        {{ 'note-details.createdAt' | translate }} {{note.createdAt | date: 'MM-dd-yyyy, hh:mm'}}<br>
+        {{ 'note-details.updatedAt' | translate }} {{note.updatedAt | date: 'MM-dd-yyyy, hh:mm'}}
+    </div>
+</div>

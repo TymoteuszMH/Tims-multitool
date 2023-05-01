@@ -48,7 +48,7 @@ public class TodoListService {
     //getting all todo lists attached to user
     public List<TodoList> findTodoListByUser(UUID userUuid){
         User user = getUser(userUuid);
-        return todoListRepo.findTodoListByUser(user.getId());
+        return todoListRepo.findTodoListByUser(user);
     }
 
     //deleting todolist

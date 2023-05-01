@@ -6,6 +6,7 @@
             "update": "Update user"
         },
         "errors":{
+            "password":"Password must have 8 characters!",
             "existnt": "User doesn't exist!",
             "occupied": "Username already exist!",
             "success": "Username added successfully"
@@ -23,13 +24,37 @@
     "navbar":{
         "title":"Tim's multitool",
         "home":"Home",
+        "average":"Average",
+        "notes":"Notes",
+        "todo":"Todo",
+        "calendar":"Calendar",
         "edit":"Edit",
         "logout":"Logout"
     },
     "confirm":{
         "confirm":"Confirm",
         "ays":"Are you sure?",
+        "check_pass":"You need to type username and password to change password",
         "yes":"Yes",
         "no":"No"
+    },
+    "edit":{
+        "username":"Change username",
+        "password":"Change password",
+        "delete":"Delete user"
+    },
+    "average":{
+        "add":"Add numbers for average, split them with comma",
+        "submit":"Calculate average",
+        "average":"Average equals:"
+    },
+    "note":{
+        "add-note":"Add note",
+        "delete-note":"Delete",
+        "non-title":"No title"
+    },
+    "note-details":{
+        "createdAt":"Created at:",
+        "updatedAt":"Updated at:"
     }
 }

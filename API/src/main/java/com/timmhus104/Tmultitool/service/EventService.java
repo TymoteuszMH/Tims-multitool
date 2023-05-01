@@ -45,7 +45,7 @@ public class EventService{
     //getting all files by type attached to user
     public List<Event> findEventByUser(UUID userUuid){
         User user = getUser(userUuid);
-        return eventRepo.findEventByUser(user.getId());
+        return eventRepo.findEventByUser(user);
     }
     public void deleteEvent(Long id){
         eventRepo.deleteEventById(id);

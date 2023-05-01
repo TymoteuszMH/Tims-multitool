@@ -6,6 +6,7 @@
             "update": "Zmiana danych użytkownika"
         },
         "errors":{
+            "password":"Hasło musi mieć 8 znaków!",
             "existnt": "Użytkownik nie istnieje!",
             "occupied": "Nazwa jest już zajęta!",
             "success": "Użytkownik został dodany"
@@ -22,14 +23,38 @@
     },
     "navbar":{
         "title":"Tim's multitool",
-        "home":"Dom",
+        "home":"Główna",
+        "average":"Średnia",
+        "notes":"Notatki",
+        "todo":"Do zrobienia",
+        "calendar":"Kalendarz",
         "edit":"Edytuj",
         "logout":"Wyloguj"
     },
     "confirm":{
         "confirm":"Potwierdź",
         "ays":"Jesteś pewien?",
+        "check_pass":"Musisz wpisać nazwę użtykownika i hasło by zmienić hasło",
         "yes":"Tak",
         "no":"Nie"
+    },
+    "edit":{
+        "username":"Zmień nazwe użytkownika",
+        "password":"Zmień hasło",
+        "delete":"Usuń konto"
+    },
+    "average":{
+        "add":"Dodaj liczby do średniej, oddziel je przecinkiem",
+        "submit":"Oblicz średnią",
+        "average":"Średnia wynosi:"
+    },
+    "note":{
+        "add-note":"Dodaj notatkę",
+        "delete-note":"Usuń",
+        "non-title":"Brak tytułu"
+    },
+    "note-details":{
+        "createdAt":"Data utworzenia:",
+        "updatedAt":"Data edycji:"
     }
 }

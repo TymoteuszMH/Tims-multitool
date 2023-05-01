@@ -1,0 +1,7 @@
+<div class="container" translate>
+    <h2>{{ 'average.average' | translate }} {{average}}</h2>
+    <label class="col-form-label" for="average">{{ 'average.add' | translate }}</label>
+    <input class="form-control" id="average" type="text" [(ngModel)]="average_list">
+    <br>
+    <button class="btn btn-primary" (click)="count()">{{ 'average.submit' | translate }}</button>
+</div>

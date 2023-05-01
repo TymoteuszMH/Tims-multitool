@@ -20,7 +20,7 @@
                 <div class="alert alert-danger" *ngIf="error">{{'login.errors.existnt' | translate}}</div>
                 <app-user-form [login] = true (done)="getStatus($event)"></app-user-form>
                 <p class = "changemess">{{ 'login.changemess' | translate }}</p>
-                <a (click)="changeForm(true)" class="link">{{ 'login.change' | translate }}</a>
+                <a (click)="changeForm(true)" class="link-opacity-75-hover">{{ 'login.change' | translate }}</a>
             </div>
             <!--
                 form for sign in
@@ -29,7 +29,7 @@
                 <div class="alert alert-danger" *ngIf="error">{{'login.errors.occupied' | translate}}</div>
                 <app-user-form (done)="getStatus($event)"></app-user-form>
                 <p class = "changemess">{{ 'login.changebackmess' | translate }}</p>
-                <a (click)="changeForm(false)" class="link">{{ 'login.changeback' | translate }}</a>
+                <a (click)="changeForm(false)" class="link-opacity-75-hover">{{ 'login.changeback' | translate }}</a>
             </div>
 
         </div>

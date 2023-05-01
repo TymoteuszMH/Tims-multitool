@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { api } from 'src/api';
+import { LoginDataService } from '../logindata.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,6 @@ export class UserService {
   @updateUser: updates user by uuid
   @deleteUser: deletes user by uuid
   */
-  readonly uuid = localStorage.getItem('uuid') || sessionStorage.getItem('uuid');
   readonly url = api.url + "user/";
 
   constructor(private http:HttpClient) { }
@@ -38,12 +38,12 @@ export class UserService {
   request can take password or username, missing value will be added on api
   */
   updateUser(val:any){
-    return this.http.put(this.url + 'update/' + this.uuid, val);
+    return this.http.put(this.url + 'update/' + LoginDataService.uuid, val);
   }
   /*
   delete user needs uuid for deleting current user
   */
   deleteUser(){
-    return this.http.delete(this.url + 'delete/' + this.uuid);
+    return this.http.delete(this.url + 'delete/' + LoginDataService.uuid);
   }
 }

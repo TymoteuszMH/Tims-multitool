@@ -18,18 +18,20 @@ export class UserFormComponent {
   @edit: checks if it should be edit form or not
   @login: checks if it should be login form or not
   @userForm: form fields
+  @keepLogged: boolean for checking if user want to keep login data or not
   */
-  keepLogged:boolean = false;
+  
   @Output() done = new EventEmitter<string>;
   @Input() title:any;
   @Input() uuid = "";
-  @Input() data:login = {username: "", password: ""};
-  @Input() edit = false;
   @Input() login = false;
+  @Input() pass_check = false;
+  keepLogged:boolean = false;
+  pass_error:boolean = false;
 
   userForm = this.fb.group({
-    username: [this.data.username, Validators.required],
-    password: [this.data.password, Validators.required],
+    username: [LoginDataService.username, Validators.required],
+    password: ["", Validators.required],
   });
 
   constructor(private fb: FormBuilder,
@@ -49,14 +51,16 @@ export class UserFormComponent {
     this.spinner.show();
     var val = {username: this.userForm.value.username,
                password: this.userForm.value.password }
+    if(val.password?.length != null && val.password.length < 8 && !this.login){
+      this.pass_error = true;
+      this.spinner.hide();
+      return false;}
     if(this.login){
       this.signIn(val);
-    }
-    else if(this.edit){
-      this.editUser(val);
     }else{
       this.signUp(val);
     }
+    return true;
   }
 
   signIn(val: any){
@@ -88,17 +92,6 @@ export class UserFormComponent {
     });
   }
 
-  editUser(val: any){
-    this.user.updateUser(val).subscribe({
-      next: () => {
-        this.done.emit("success");
-        this.spinner.hide();
-      },
-      error: () => {
-        this.done.emit("error");
-        this.spinner.hide();
-      }
-    });
-  }
+
 
 }

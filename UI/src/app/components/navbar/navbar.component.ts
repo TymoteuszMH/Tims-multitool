@@ -16,7 +16,7 @@ export class NavbarComponent {
   logged = LoginDataService.logged;
   login = LoginDataService.username;
   logUuid = LoginDataService.uuid;
-  //changing data after logout
+  //showing confirm modal changing data after logout
   logout(){
     const modalRef = this.modalService.open(ConfirmComponent,
       {
@@ -24,10 +24,11 @@ export class NavbarComponent {
         centered: true,
         keyboard: false,
       });
-    modalRef.result.then(()=>{
-      LoginDataService.logout();
-      this.changeroute.change(false);
+    modalRef.result.then((res:boolean)=>{
+      if(res){
+        LoginDataService.logout();
+        this.changeroute.change(false);
+      }
     });
-
   }
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { api } from 'src/api';
+import { LoginDataService } from '../logindata.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,10 @@ export class NoteService {
   @updateNote: updating existing note by it's id
   @deleteNote: deleting note by it's id
   */
-  readonly uuid = localStorage.getItem('uuid') || sessionStorage.getItem('uuid');
-  readonly url = api.url + this.uuid + "/note/";
+  readonly url: string;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+    this.url = api.url + LoginDataService.uuid + "/note/";}
   /*
   gets list of an notes
   */

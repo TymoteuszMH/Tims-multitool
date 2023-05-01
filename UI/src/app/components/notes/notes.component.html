@@ -1,0 +1,36 @@
+<div class="container" translate>
+    <button class="btn btn-primary" style="margin-bottom: 10px;" (click)="addNote()">{{ 'note.add-note' | translate }}</button>
+    <div class="search">
+        <!--filters inputs-->
+        <input [(ngModel)]="titleFilter" class="form-control search" (keyup)="filter()" placeholder="Search by title">
+    </div><hr>
+    <!--cards with data-->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-2">
+        <div class="col" *ngFor="let note of notes">
+                <div class="card" style="width: 16rem;">
+                    <div class="card-header">
+                        <h3 class="card-title">{{note.title || 'note.non-title' | translate}}
+                            <div class="btn-group dropdown float-end">
+                                <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><button (click)="deleteNote(note.id)" class="dropdown-item" data-bs-toggle="modal">{{ 'note.delete-note' | translate }}</button></li>
+                                </ul>
+                            </div>
+                        </h3>
+                    </div>
+                    <a (click)="goToDetails(note.id)" class="btn card-body">
+                        <div class="float-start">
+                            <h5 style="color: grey" class="card-text float-start">{{note.content.slice(0, 20)}}...</h5><br>
+                        </div>
+                    </a>
+                    <div class="card-footer">
+                        <small style="color: lightgrey" class="text-body-secondary">
+                            {{ 'note-details.updatedAt' | translate }} {{note.updatedAt | date: 'MM-dd-yyyy, hh:mm'}}
+                        </small>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

@@ -1,12 +1,24 @@
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link" aria-current="page" routerLink="" routerLinkActive="active">{{ 'navbar.home' | translate }}</a>
+    <a class="nav-link" aria-current="page" routerLink="/home" routerLinkActive="active">{{ 'navbar.home' | translate }}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" routerLink="/average" routerLinkActive="active">{{ 'navbar.average' | translate }}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" routerLink="/notes" routerLinkActive="active">{{ 'navbar.notes' | translate }}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" routerLink="/todo" routerLinkActive="active">{{ 'navbar.todo' | translate }}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" routerLink="/calendar" routerLinkActive="active">{{ 'navbar.calendar' | translate }}</a>
   </li>
   <li class="nav-item dropdown ms-auto">
-    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" routerLink="/user" routerLinkActive="active" role="button" aria-expanded="false">{{login}}</a>
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"  role="button" aria-expanded="false">{{login}}</a>
     <ul class="dropdown-menu dropdown-menu-end">
-      <li><a class="dropdown-item" href="\user">{{ 'navbar.edit' | translate }}</a></li>
-      <li><a class="dropdown-item" href="#" style="color:red" (click)="logout()">{{ 'navbar.logout' | translate }}</a></li>
+      <li><a class="dropdown-item" routerLink="/edit-user" routerLinkActive="active">{{ 'navbar.edit' | translate }}</a></li>
+      <li><a class="dropdown-item btn" style="color:red" (click)="logout()">{{ 'navbar.logout' | translate }}</a></li>
     </ul>
   </li>
 </ul>

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserFormComponent } from './modals/user-form/user-form.component';
 import { UserService } from './services/api/user.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -19,6 +19,11 @@ import { ConfirmComponent } from './modals/confirm/confirm.component';
 import { EventService } from './services/api/event.service';
 import { NoteService } from './services/api/note.service';
 import { TodoService } from './services/api/todo.service';
+import { NotesComponent } from './components/notes/notes.component';
+import { AverageComponent } from './components/average/average.component';
+import { NoteDetailsComponent } from './components/notes/note-details/note-details.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { PassChangeComponent } from './modals/pass-change/pass-change.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +32,18 @@ import { TodoService } from './services/api/todo.service';
     LoginComponent,
     NavbarComponent,
     HomeComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    NotesComponent,
+    AverageComponent,
+    NoteDetailsComponent,
+    EditUserComponent,
+    PassChangeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,

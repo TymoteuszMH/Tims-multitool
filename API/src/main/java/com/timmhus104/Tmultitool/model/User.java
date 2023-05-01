@@ -17,6 +17,7 @@ public class User implements Serializable {
     @Column(nullable = false, updatable = false)
     private Long id;
     //uuid is used to authenticate user's activity
+    @Column(nullable = false, updatable = false)
     private UUID uuid = UUID.randomUUID();
     @Column(unique = true)
     private String username;

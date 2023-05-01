@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { api } from 'src/api';
+import { LoginDataService } from '../logindata.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,7 @@ export class EventService {
   @updateEvent: updating existing event by it's id
   @deleteEvent: deleting event by it's id
   */
-  readonly uuid = localStorage.getItem('uuid') || sessionStorage.getItem('uuid');
-  readonly url = api.url + this.uuid + "/event/";
+  readonly url = api.url + LoginDataService.uuid + "/event/";
 
   constructor(private http:HttpClient) { }
   /*

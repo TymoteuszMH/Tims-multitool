@@ -1,11 +1,14 @@
 <form [formGroup]="userForm" (ngSubmit)="formSubmit()" class="form-gruop row" translate>
-    <label class="col-form-label" for="username">{{ 'login.username' | translate }}</label>
-    <input class="form-control" id="username" type="text" formControlName="username">
-  
+    <label *ngIf="!pass_check" class="col-form-label" for="username">{{ 'login.username' | translate }}</label>
+    <input *ngIf="!pass_check" class="form-control" id="username" type="text" formControlName="username">
+
     <label class="col-form-label" for="password">{{ 'login.password' | translate }}</label>
     <input class="form-control" id="password" type="password" formControlName="password">
+    <small style="color: red;" *ngIf="pass_error && !login">
+        {{ 'login.errors.password' | translate }}
+    </small>
 
-    <div class="form-check" *ngIf="login">
+    <div class="form-check" *ngIf="login && !pass_check">
         <input class="form-check-input" id="check" type="checkbox" (click)="keep($event)"> 
         <label class="form-check-label" for="check">{{ 'login.keep' | translate }}</label>
     </div>

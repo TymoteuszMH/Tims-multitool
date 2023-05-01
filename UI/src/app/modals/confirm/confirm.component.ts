@@ -7,17 +7,12 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./confirm.component.css']
 })
 export class ConfirmComponent {
-  @Output() done = new EventEmitter<boolean>;
-
   constructor(
     public activeModal: NgbActiveModal
   ){}
 
-  emitAnwser(){
-    this.activeModal.close();
-  }
-  //closing modal
-  closeModal() {
-    this.activeModal.dismiss();
+  //closing modal and sending response
+  closeModal(anwser:boolean) {
+    this.activeModal.close(anwser);
   }
 }

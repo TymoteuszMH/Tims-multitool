@@ -44,6 +44,9 @@ public class UserService {
         if (user.getPassword() == null){
             user.setPassword(oldUser.getPassword());
         }
+        user.setEvents(oldUser.getEvents());
+        user.setNotes(oldUser.getNotes());
+        user.setTodos(oldUser.getTodos());
         return userRepo.save(user);
     }
 

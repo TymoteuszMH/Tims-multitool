@@ -45,7 +45,7 @@ public class NoteService {
     //getting all files by type attached to user
     public List<Note> findNoteByUser(UUID userUuid){
         User user = getUser(userUuid);
-        return noteRepo.findNoteByUser(user.getId());
+        return noteRepo.findNoteByUser(user);
     }
     public void deleteNote(Long id){
         noteRepo.deleteNoteById(id);
