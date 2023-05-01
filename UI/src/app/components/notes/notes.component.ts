@@ -14,6 +14,8 @@ import { NoteService } from 'src/app/services/api/note.service';
 export class NotesComponent {
   /*
   @notes: get list of notes as note from interface
+  @notesWithoutFilters: stores notes array
+  @titleFilter: filter title
   */
   notes:note[] = [];
   notesWithoutFilters:note[] = [];
@@ -28,6 +30,14 @@ export class NotesComponent {
   ngOnInit(){
     this.getNotes();
   }
+
+  /*
+  @getNotes: getting user's notes
+  @filter: filtring through notes to find title
+  @goToDetails: going to note details
+  @addNote: adding note and going to it
+  @deleteNote: showing confirm modal, deletign note after submitting
+  */
 
   getNotes(){
     this.spinner.show();
@@ -77,6 +87,5 @@ export class NotesComponent {
         });
       }
     });
-
   }
 }

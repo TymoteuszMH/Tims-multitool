@@ -10,6 +10,9 @@ import { NoteService } from 'src/app/services/api/note.service';
   styleUrls: ['./note-details.component.css']
 })
 export class NoteDetailsComponent{
+  /*
+  @note: getting note
+  */
   note: note = {id: 0, user: {username: "", password: ""}, title: "", content: "", createdAt: new Date, updatedAt: new Date}
 
   constructor(
@@ -17,12 +20,17 @@ export class NoteDetailsComponent{
     private noteService: NoteService,
     private spinner: NgxSpinnerService,
   ){}
-  //getting id from url
+
   ngOnInit(){
     this.spinner.show();
     const tempID = this.route.snapshot.paramMap.get("id");
     this.getNote(tempID);
   }
+
+  /*
+  @getNote: getting note by id from url
+  @save: saving note after writing without clicking any button
+  */
 
   getNote(id:any){
     this.noteService.getNoteById(id).subscribe((res:any)=>{

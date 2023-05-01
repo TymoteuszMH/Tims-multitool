@@ -12,11 +12,23 @@ import { LoginDataService } from 'src/app/services/logindata.service';
 export class NavbarComponent {
   constructor(private changeroute: ChangeService, 
               private modalService: NgbModal){}
+  /*
+  @logged: getting if user is logged
+  @login: getting username
+  @logUuid: getting getting logUuid
+  */
+  logged = "";
+  login = ""
+  logUuid = ""
+  /*
+  @logout: showing confirm modal, logging out after submitting
+  */
+  ngDoCheck(){
+    this.logged = LoginDataService.logged;
+    this.login = LoginDataService.username;
+    this.logUuid = LoginDataService.uuid;
+  }
 
-  logged = LoginDataService.logged;
-  login = LoginDataService.username;
-  logUuid = LoginDataService.uuid;
-  //showing confirm modal changing data after logout
   logout(){
     const modalRef = this.modalService.open(ConfirmComponent,
       {

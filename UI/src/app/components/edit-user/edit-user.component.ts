@@ -15,9 +15,14 @@ import { LoginDataService } from 'src/app/services/logindata.service';
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent {
+  /*
+  @data: takes username of logged user and empty password for forms
+  @usn_error: shows error if username is occupied
+  @usernem: username field for username form
+  @password: password field for password form
+  */
   data:login = {username: LoginDataService.username, password: ""};
   usn_error:boolean = false;
-  pass_error:boolean = false;
 
   username = this.fb.group({
     username: [this.data.username, Validators.required],
@@ -31,9 +36,15 @@ export class EditUserComponent {
               private user: UserService,
               private spinner: NgxSpinnerService,
               private modalService: NgbModal,
-              private changeroute: ChangeService) { }
+              private changeroute: ChangeService){}
   
+  /*
+  @editUsername: open modal to check password of an user, then after modal is closed sending username to change and logging user out, if username exists then error shows
+  @editPassword: open modal to check password of an user, then after modal is closed sending password to change and logging user out
+  @deleteUser: open confirm modal to ask user if he's sure, after submitting deleting user and logging out
+  */
   editUsername(){
+    this.usn_error = false;
     var val = {username: this.username.value.username}
     const modalRef = this.modalService.open(PassChangeComponent,
       {
@@ -55,7 +66,8 @@ export class EditUserComponent {
             this.spinner.hide();
           }
         });
-
+      }else{
+        
       }
     });
   }
@@ -78,7 +90,6 @@ export class EditUserComponent {
             this.spinner.hide();
           },
           error: () => {
-            this.pass_error = true;
             this.spinner.hide();
           }
         });

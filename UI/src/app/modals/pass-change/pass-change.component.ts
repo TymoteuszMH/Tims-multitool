@@ -7,9 +7,17 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./pass-change.component.css']
 })
 export class PassChangeComponent {
+  /*
+  @error: showing error if password is incorect
+  */
   error = false;
 
   constructor(public activeModal: NgbActiveModal){}
+
+  /*
+  @getStatus: checking if password is correct
+  @closeModal: closing modal
+  */
 
   getStatus(res:string){
     this.error = false;

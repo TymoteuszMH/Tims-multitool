@@ -14,11 +14,11 @@ export class UserFormComponent {
   /*
   @done: sending status to parent login site
   @uuid: uuid for changing users data
-  @data: data for form
-  @edit: checks if it should be edit form or not
   @login: checks if it should be login form or not
-  @userForm: form fields
+  @pass_checkL check if form should display username field
   @keepLogged: boolean for checking if user want to keep login data or not
+  @pass_error: showing error if password is shorter than 8 chars
+  @userForm: form fields
   */
   
   @Output() done = new EventEmitter<string>;
@@ -37,16 +37,18 @@ export class UserFormComponent {
   constructor(private fb: FormBuilder,
               private user: UserService,
               private spinner: NgxSpinnerService) { }
+
   /*
   @keep: checking if user want to have his data stored on device
   @formSubmit: getting data and checking what form is submitted
   @signIn: sending data to login api, if data is correct, success is send to parent component, data is stored in localStorage, else error is send to parent component
   @signUp: sending data to add user api, if data is correct, success is send to parent component, else error is send to parent component
-  @editUser: sending data to edit user api, if data is correct, success is send to parent component, else error is send to parent component
   */
+
   keep(event:any){
     this.keepLogged = event.target.checked;
   }
+
   formSubmit(){
     this.spinner.show();
     var val = {username: this.userForm.value.username,
@@ -91,7 +93,4 @@ export class UserFormComponent {
       }
     });
   }
-
-
-
 }
