@@ -2,7 +2,7 @@
     <button class="btn btn-primary" style="margin-bottom: 10px;" (click)="addNote()">{{ 'note.add-note' | translate }}</button>
     <div class="search">
         <!--filters inputs-->
-        <input [(ngModel)]="titleFilter" class="form-control search" (keyup)="filter()" placeholder="Search by title">
+        <input [(ngModel)]="titleFilter" class="form-control search" (keyup)="filter()" placeholder="{{ 'search' | translate }}">
     </div><hr>
     <!--cards with data-->
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-2">

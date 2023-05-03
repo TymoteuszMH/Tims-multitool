@@ -12,7 +12,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/{userUuid}/todoList/{todoListId}/todoListElement")
+@RequestMapping("/{userUuid}/todo-list/{todoListId}/todo-list-element")
 public class TodoElementResource {
     private final TodoElementService todoElementService;
 

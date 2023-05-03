@@ -1,0 +1,21 @@
+<div class="card" translate>
+    <div class="modal-header">
+      <h1 *ngIf = "!edit" class="modal-title fs-5" id="exampleModalLabel">{{ 'eventForm.addModalTitle' | translate }}</h1>
+      <h1 *ngIf = "edit" class="modal-title fs-5" id="exampleModalLabel">{{ 'eventForm.editModalTitle' | translate }}</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal(false)"></button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="eventForm" (ngSubmit)="formSubmit()" class="form-gruop row" translate>
+        <label class="col-form-label" for="title">{{ 'eventForm.title' | translate }}</label>
+        <input class="form-control" id="title" type="text" formControlName="title">
+    
+        <label class="col-form-label" for="date">{{ 'eventForm.date' | translate }}</label>
+        <input class="form-control" id="date" type="date" formControlName="date">
+      <hr>
+        <div class="mx-auto text-center">
+          <button class="btn btn-primary" type="submit" style="margin-right: 10px" [disabled]="!eventForm.valid">{{ 'eventForm.save' | translate }}</button>
+          <button type="button" class="btn btn-danger" (click)="closeModal(false)">{{ 'eventForm.cancel' | translate }}</button>
+        </div>
+      </form>
+    </div>
+</div>

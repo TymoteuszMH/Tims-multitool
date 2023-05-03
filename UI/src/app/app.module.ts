@@ -24,6 +24,13 @@ import { AverageComponent } from './components/average/average.component';
 import { NoteDetailsComponent } from './components/notes/note-details/note-details.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { PassChangeComponent } from './modals/pass-change/pass-change.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { CommonModule } from '@angular/common';
+import { EventFormComponent } from './modals/event-form/event-form.component';
+import { TodoListComponent } from './modals/todo-list/todo-list.component';
+import { TodoComponent } from './components/todo/todo.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +44,14 @@ import { PassChangeComponent } from './modals/pass-change/pass-change.component'
     AverageComponent,
     NoteDetailsComponent,
     EditUserComponent,
-    PassChangeComponent
+    PassChangeComponent,
+    CalendarComponent,
+    EventFormComponent,
+    TodoListComponent,
+    TodoComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
@@ -54,6 +66,9 @@ import { PassChangeComponent } from './modals/pass-change/pass-change.component'
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
+    }),
+    CalendarModule.forRoot({ 
+      provide: DateAdapter, useFactory: adapterFactory 
     }),
   ],
   providers: [UserService, EventService, NoteService, TodoService],

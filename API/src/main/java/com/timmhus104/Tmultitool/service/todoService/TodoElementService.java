@@ -46,7 +46,7 @@ public class TodoElementService {
     //getting all elements by type attached to list
     public List<TodoElement> findTodoElementByTodoList(Long todoListId){
         TodoList todoList = todoListRepo.findTodoListById(todoListId).orElseThrow(() -> new FileNotFoundException("File not found"));
-        return todoElementRepo.findTodoElementByTodoList(todoList.getId());
+        return todoElementRepo.findTodoElementByTodoList(todoList);
     }
 
     //deleting todo element

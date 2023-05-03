@@ -6,6 +6,6 @@ export interface todoEl{
 }
 //status for element
 export enum status{
-    DONE = "1",
-    UNDONE = "0"
+    DONE = "DONE",
+    UNDONE = "UNDONE"
 }

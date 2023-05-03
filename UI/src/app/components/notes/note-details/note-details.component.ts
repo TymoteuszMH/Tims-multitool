@@ -13,7 +13,7 @@ export class NoteDetailsComponent{
   /*
   @note: getting note
   */
-  note: note = {id: 0, user: {username: "", password: ""}, title: "", content: "", createdAt: new Date, updatedAt: new Date}
+  note: note = {id: 0, title: "", content: "", createdAt: new Date, updatedAt: new Date}
 
   constructor(
     private route: ActivatedRoute,

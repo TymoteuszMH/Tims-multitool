@@ -15,7 +15,7 @@ export class TodoService {
   @updateTodoList: updating existing todo list by it's id
   @deleteTodoList: deleting todo list by it's id
   */
-  readonly url = api.url + LoginDataService.uuid + "/todoList/";
+  readonly url = api.url + LoginDataService.uuid + "/todo-list/";
 
   constructor(private http:HttpClient) { }
   /*
@@ -53,31 +53,31 @@ export class TodoService {
   gets all elements of a list
   */
   getTodoElements(listId: any):Observable<any[]>{
-    return this.http.get<any[]>(this.url + listId + '/todoListElement/all');
+    return this.http.get<any[]>(this.url + listId + '/todo-list-element/all');
   }
   /*
   todo element gets values for: content,
   all values are needed
   */
   addTodoElement(listId: any, val:any){
-    return this.http.post(this.url + listId + '/todoListElement/add', val);
+    return this.http.post(this.url + listId + '/todo-list-element/add', val);
   }
   /*
   update todo element needs all previous data
   */
   updateTodoElement(listId: any, id: any, val:any){
-    return this.http.put(this.url + listId + '/todoListElement/update/' + id, val);
+    return this.http.put(this.url + listId + '/todo-list-element/update/' + id, val);
   }
   /*
   changing element's status
   */
   changeElementStatus(listId: any, id: any, status:any){
-    return this.http.get(this.url + listId + '/todoListElement/update/' + id + '/' + status);
+    return this.http.get(this.url + listId + '/todo-list-element/update/' + id + '/' + status);
   }
   /*
   id of todo element is needed for deleting it
   */
   deleteTodoElement(listId: any, id: any){
-    return this.http.delete(this.url + listId +  '/todoListElement/delete/' + id);
+    return this.http.delete(this.url + listId +  '/todo-list-element/delete/' + id);
   }
 }

@@ -1,0 +1,36 @@
+<div class="container" translate>
+    <button class="btn btn-primary" style="margin-bottom: 10px;" (click)="addTodo()">{{ 'todo.add-todo' | translate }}</button>
+    <div class="search">
+        <!--filters inputs-->
+        <input [(ngModel)]="titleFilter" class="form-control search" (keyup)="filter()" placeholder="{{ 'search' | translate }}">
+    </div><hr>
+    <!--cards with data-->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-2">
+        <div class="col" *ngFor="let todo of todos">
+                <div class="card" style="width: 16rem;">
+                    <div class="card-header">
+                        <h3 class="card-title">{{todo.title || 'todo.non-title' | translate}}
+                            <div class="float-end">
+                                <a class="btn" (click)="deleteTodo(todo.id)">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </div>
+                        </h3>
+                    </div>
+                    <a (click)="showModal(todo)" class="btn card-body">
+                        <ol style="color: grey" class="card-text text-start">
+                            <div *ngFor="let element of todo.todoElement.slice(0, 4); let i = index">
+                                <li *ngIf="i < 3">{{element.content}}</li>
+                                <p *ngIf="i >= 3">...</p>
+                            </div>
+                        </ol>
+                    </a>
+                    <div class="card-footer">
+                        <small style="color: lightgrey" class="text-body-secondary">
+                            {{ 'todo.updatedAt' | translate }} {{todo.updatedAt | date: 'MM-dd-yyyy, hh:mm'}}
+                        </small>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

@@ -25,7 +25,6 @@ public class TodoList implements Serializable {
     @JsonBackReference
     private User user;
 
-    @Column(nullable = false)
     private String title;
 
     @OneToMany(mappedBy = "todoList", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)

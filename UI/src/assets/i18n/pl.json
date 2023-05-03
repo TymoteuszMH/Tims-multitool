@@ -48,6 +48,7 @@
         "submit":"Oblicz średnią",
         "average":"Średnia wynosi:"
     },
+    "search":"Szukaj po tytule",
     "note":{
         "add-note":"Dodaj notatkę",
         "delete-note":"Usuń",
@@ -55,6 +56,35 @@
     },
     "note-details":{
         "createdAt":"Data utworzenia:",
+        "updatedAt":"Data edycji:"
+    },
+    "calendar":{
+        "previous": "Poprzedni",
+        "today": "Dziś",
+        "next": "Następny",
+        "month": "Miesiąc",
+        "week": "Tydzień",
+        "add":"Dodaj wydarzenie"
+    },
+    "eventForm":{
+        "addModalTitle": "Dodaj wydarzenie",
+        "editModalTitle": "Edytuj wydarzenie",
+        "title":"Tytuł:",
+        "date":"Data:",
+        "save": "Zapisz",
+        "cancel": "Anuluj"
+    },
+    "todoForm":{
+        "modalTitle": "Lista do zrobienia",
+        "title":"Tytuł:",
+        "date":"Data:",
+        "save-date":"Zapisz datę",
+        "createdAt":"Data utworzenia:",
+        "addEl": "Dodaj element"
+    },
+    "todo":{
+        "add-todo":"Dodaj listę do zrobienia",
+        "non-title":"Brak tytułu",
         "updatedAt":"Data edycji:"
     }
 }

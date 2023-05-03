@@ -1,0 +1,39 @@
+<div class="card" translate>
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="exampleModalLabel">{{ 'todoForm.modalTitle' | translate }}</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal(false)"></button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="todoForm" class="form-gruop row" translate>
+        <label class="col-form-label" for="title">{{ 'todoForm.title' | translate }}</label>
+        <input type="text" class="form-control" style="border: 0;" formControlName="title" (change)="saveLi()" placeholder="{{'todo.non-title' | translate}}">
+    
+        <label class="col-form-label" for="date">{{ 'todoForm.date' | translate }}</label>
+        <div class="input-group mb-3">
+          <input class="form-control" id="date" type="date" formControlName="date">
+            <span class="input-group-text">
+              <a class="btn" (click)="saveLi()">
+                {{ 'todoForm.save-date' | translate }}
+              </a>
+            </span>
+        </div>
+        <hr>
+        <button type="button" class="btn btn-primary" (click)="addTodoEl()">{{ 'todoForm.addEl' | translate }}</button>
+      </form>
+      <ol class="container">
+        <li *ngFor="let element of todoElements">
+          <div class="input-group mb-3">
+            <div class="input-group-text">
+              <input class="form-check-input" id="check" type="checkbox" [checked]="element.status == 'DONE'" (click)="done($event, element.id, element.content)">
+            </div>
+            <textarea type="text" class="form-control" rows="1" style="resize: none;" [(ngModel)]="element.content" (change)="saveEl(element.id, element.content, element.status)" placeholder="{{'todoForm.non-title' | translate}}"></textarea>
+            <span class="input-group-text">
+              <a class="btn" (click)="deleteEl(element.id)">
+                <i class="bi bi-trash"></i>
+              </a>
+            </span>
+          </div>
+        </li>
+      </ol>
+    </div>
+</div>

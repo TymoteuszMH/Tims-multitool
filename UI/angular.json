@@ -13,7 +13,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": ["lodash"],
+            "allowedCommonJsDependencies": [
+              "lodash"
+            ],
             "outputPath": "dist/ui",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -26,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/angular-calendar/css/angular-calendar.css",
               "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
@@ -90,6 +93,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/angular-calendar/css/angular-calendar.css",
               "src/styles.css"
             ],
             "scripts": []

@@ -48,6 +48,7 @@
         "submit":"Calculate average",
         "average":"Average equals:"
     },
+    "search":"Serach by title",
     "note":{
         "add-note":"Add note",
         "delete-note":"Delete",
@@ -55,6 +56,35 @@
     },
     "note-details":{
         "createdAt":"Created at:",
+        "updatedAt":"Updated at:"
+    },
+    "calendar":{
+        "previous": "Previous",
+        "today": "Today",
+        "next": "Next",
+        "month": "Month",
+        "week": "Week",
+        "add":"Add event"
+    },
+    "eventForm":{
+        "addModalTitle": "Add event",
+        "editModalTitle": "Edit event",
+        "title":"Title:",
+        "date":"Date:",
+        "save": "Save",
+        "cancel": "Cancel"
+    },
+    "todoForm":{
+        "modalTitle": "Todo list",
+        "title":"Title:",
+        "date":"Date:",
+        "save-date":"Save date",
+        "createdAt":"Created at:",
+        "addEl": "Add element"
+    },
+    "todo":{
+        "add-todo":"Add todo list",
+        "non-title":"No title",
         "updatedAt":"Updated at:"
     }
 }

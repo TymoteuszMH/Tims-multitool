@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/{userUuid}/todoList")
+@RequestMapping("/{userUuid}/todo-list")
 public class TodoListResource {
     private final TodoListService todoListService;
 

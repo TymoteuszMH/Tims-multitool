@@ -7,6 +7,8 @@ import { NotesComponent } from './components/notes/notes.component';
 import { NoteDetailsComponent } from './components/notes/note-details/note-details.component';
 import { LoginDataService } from './services/logindata.service';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { TodoComponent } from './components/todo/todo.component';
 
 export const notlogged: Routes = [
   {path:'', component:LoginComponent},
@@ -18,6 +20,8 @@ export const logged: Routes = [
   {path:'average', component:AverageComponent},
   {path:'notes', component:NotesComponent},
   {path:'note-details/:id', component:NoteDetailsComponent},
+  {path:'todo', component:TodoComponent},
+  {path:'calendar', component:CalendarComponent},
   {path: '**', redirectTo: 'home'}
 ];
 //checking if user is logged, changing site's route
