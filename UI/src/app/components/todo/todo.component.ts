@@ -13,8 +13,8 @@ import { TodoService } from 'src/app/services/api/todo.service';
 })
 export class TodoComponent {
   /*
-  @notes: get list of notes as note from interface
-  @notesWithoutFilters: stores notes array
+  @todos: get list of todos as todoLi from interface
+  @todosWithoutFilters: stores todos array
   @titleFilter: filter title
   */
   todos:todoLi[] = [];
@@ -31,11 +31,11 @@ export class TodoComponent {
   }
 
   /*
-  @getNotes: getting user's notes
-  @filter: filtring through notes to find title
-  @goToDetails: going to note details
-  @addNote: adding note and going to it
-  @deleteNote: showing confirm modal, deletign note after submitting
+  @getTodos: getting user's todos
+  @filter: filtring through todos to find title
+  @showModal: showing todos edit modal
+  @addTodo: adding todo and showing it's modal
+  @deleteTodo: showing confirm modal, deleting todo after submitting
   */
 
   getTodos(){

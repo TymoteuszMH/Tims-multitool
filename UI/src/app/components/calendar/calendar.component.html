@@ -49,7 +49,7 @@
             [viewDate]="viewDate"
             [refresh]="refresh"
             [activeDayIsOpen]="activeDayIsOpen"
-            [events]="CalEvents"
+            [events]="calEvents"
             (dayClicked)="dayClicked($event.day)"
             (eventClicked)="openModal($event.event)"
             (eventTimesChanged)="eventTimesChanged($event)">
@@ -57,7 +57,7 @@
         <mwl-calendar-week-view
             *ngSwitchCase="CalendarView.Week"
             [viewDate]="viewDate"
-            [events]="CalEvents"
+            [events]="calEvents"
             [refresh]="refresh"
             (eventTimesChanged)="eventTimesChanged($event)">
         </mwl-calendar-week-view>

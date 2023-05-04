@@ -32,6 +32,15 @@ const colors: Record<string, EventColor> = {
 })
 
 export class CalendarComponent implements OnInit{
+  /*
+  @view: current view
+  @CalendarView: calendar view for calendar module
+  @viewDate: date for calendar module
+  @actions: actions: edit and delete for each element
+  @refresh: refreshing calendar after change
+  @calEvents: events in calendar
+  activeDayIsOpen: module for calendar module
+  */
 
   view: CalendarView = CalendarView.Month;
 
@@ -58,7 +67,7 @@ export class CalendarComponent implements OnInit{
 
   refresh = new Subject<void>();
 
-  CalEvents: CalendarEvent[] = [];
+  calEvents: CalendarEvent[] = [];
 
   activeDayIsOpen: boolean = true;
 
@@ -67,9 +76,25 @@ export class CalendarComponent implements OnInit{
               private spinner: NgxSpinnerService,
               private modalService: NgbModal) {}
 
+  /*
+  @getEvents: getting all events
+  @getTodos: getting todos with date
+  @openModal: check wich modal should show
+  @actions: check with event should show be deleted
+  @dayClicked: clicking day for calendar module
+  @eventTimesChanged: module for calendar module
+  @setView: module for calendar module
+  @closeOpenMonthViewDay: module for calendar module
+  @addEvent: adding new event
+  @editEvent: opens modal for editing event
+  @editTodo: opens modal for editing todo
+  @deleteEvent: opens confirm modal for deleting event
+  @deleteTodo: opens confirm modal for deleting todo
+  */
+
   ngOnInit(){
     this.spinner.show();
-    this.CalEvents = [];
+    this.calEvents = [];
     this.getEvents();
     this.getTodos();
   }
@@ -77,7 +102,7 @@ export class CalendarComponent implements OnInit{
   getEvents(){
     this.eventService.getEvents().subscribe((res)=>{
       res.forEach((el:any)=>{
-        this.CalEvents.push({start: startOfDay(new Date(el.date)),
+        this.calEvents.push({start: startOfDay(new Date(el.date)),
                               id: el.id,
                               title: el.title,
                               color: colors['event'],
@@ -92,7 +117,7 @@ export class CalendarComponent implements OnInit{
     this.todoService.getTodoLists().subscribe((res)=>{
       res.forEach((el:any)=>{
         if(el.date){
-          this.CalEvents.push({start: startOfDay(new Date(el.date)),
+          this.calEvents.push({start: startOfDay(new Date(el.date)),
                                 id: el.id,
                                 title: el.title,
                                 color: colors['todo'],
@@ -135,7 +160,7 @@ export class CalendarComponent implements OnInit{
   }
 
   eventTimesChanged({event, newStart, newEnd}: CalendarEventTimesChangedEvent){
-    this.CalEvents = this.CalEvents.map((iEvent) => {
+    this.calEvents = this.calEvents.map((iEvent) => {
       if (iEvent === event) {
         return {
           ...event,
@@ -171,7 +196,6 @@ export class CalendarComponent implements OnInit{
   }
 
   editEvent(data:any){
-
     var val = {id: data.id,
       title: data.title,
       date: data.start}
@@ -190,6 +214,7 @@ export class CalendarComponent implements OnInit{
       }
     });
   }
+
   editTodo(data:any){
     var val = {id: data.id,
       title: data.title,

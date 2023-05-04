@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +31,7 @@ import { CommonModule } from '@angular/common';
 import { EventFormComponent } from './modals/event-form/event-form.component';
 import { TodoListComponent } from './modals/todo-list/todo-list.component';
 import { TodoComponent } from './components/todo/todo.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,12 @@ import { TodoComponent } from './components/todo/todo.component';
     }),
     CalendarModule.forRoot({ 
       provide: DateAdapter, useFactory: adapterFactory 
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
   providers: [UserService, EventService, NoteService, TodoService],

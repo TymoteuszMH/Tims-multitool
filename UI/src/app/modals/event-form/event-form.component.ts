@@ -2,9 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Events } from 'src/app/interfaces/event';
 import { EventService } from 'src/app/services/api/event.service';
-import { UserService } from 'src/app/services/api/user.service';
 
 @Component({
   selector: 'app-event-form',
@@ -12,6 +10,13 @@ import { UserService } from 'src/app/services/api/user.service';
   styleUrls: ['./event-form.component.css']
 })
 export class EventFormComponent {
+  /*
+  @data: data for edit
+  @edit: checks if modal should be add or edit modal
+  @id: id of edited event
+  @title: title of edited event
+  @date: date of edited event
+  */
   @Input() data: any;
   @Input() edit: boolean = false;
 
@@ -25,6 +30,7 @@ export class EventFormComponent {
               private fb: FormBuilder,
               private spinner: NgxSpinnerService,
               private eventService: EventService) {}
+
   ngOnInit(){
     if(this.data){
       this.id = this.data.id;
@@ -38,6 +44,12 @@ export class EventFormComponent {
       date: [this.date, Validators.required],
     });
   }
+
+  /*
+  @formSubmit: after submitting function check's if it's an edit for or not and sends data to correct api
+  @closeModal: closing modal
+  */
+
   formSubmit(){
     this.spinner.show();
     var val = {title: this.eventForm.value.title,

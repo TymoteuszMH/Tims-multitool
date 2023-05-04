@@ -38,6 +38,17 @@
         "yes":"Tak",
         "no":"Nie"
     },
+    "home":{
+        "welcome": "Witaj ",
+        "average": "Średnia",
+        "average-desc": "Tutaj możesz obliczyć średnią!",
+        "notes":"Notatki",
+        "notes-desc": "Tutaj możesz dodać swoje notatki!",
+        "todo": "Lista do zrobienia",
+        "todo-desc":"Tutaj możesz stworzyć listę do zrobienia!",
+        "calendar": "Kalendarz",
+        "calendar-desc":"Tutaj możesz dodawać swoje wydarzenia!"
+    },
     "edit":{
         "username":"Zmień nazwe użytkownika",
         "password":"Zmień hasło",

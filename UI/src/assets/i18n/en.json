@@ -38,6 +38,17 @@
         "yes":"Yes",
         "no":"No"
     },
+    "home":{
+        "welcome": "Hello ",
+        "average": "Average",
+        "average-desc": "Here you can count your average!",
+        "notes":"Notes",
+        "notes-desc": "Here you can add some note!",
+        "todo": "Todo List",
+        "todo-desc":"Here you can create todo list!",
+        "calendar": "Calendar",
+        "calendar-desc":"Here you can add your events!"
+    },
     "edit":{
         "username":"Change username",
         "password":"Change password",

@@ -1,1 +1,39 @@
-<p>home works!</p>
+<div class="container" translate>
+    <div class="text-center">
+        <h1>{{ 'home.welcome' | translate }}{{login}}!</h1>
+        <div class="row">
+            <a href="/average" class="card col-6 mx-auto">
+                <div class="card-header">
+                    <h5 class="card-title header">{{ 'home.average' | translate }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text body">{{ 'home.average-desc' | translate }}</p>
+                </div>
+            </a><br>
+            <a href="/notes" class="card col-6 mx-auto">
+                <div class="card-header">
+                    <h5 class="card-title header">{{ 'home.notes' | translate }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text body">{{ 'home.notes-desc' | translate }}</p>
+                </div>
+            </a><br>
+            <a href="/todo" class="card col-6 mx-auto">
+                <div class="card-header">
+                    <h5 class="card-title header">{{ 'home.todo' | translate }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text body">{{ 'home.todo-desc' | translate }}</p>
+                </div>
+            </a>
+            <a href="/calendar" class="card col-6 mx-auto">
+                <div class="card-header">
+                    <h5 class="card-title header">{{ 'home.calendar' | translate }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text body">{{ 'home.calendar-desc' | translate }}</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

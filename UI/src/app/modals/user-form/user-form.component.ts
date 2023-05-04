@@ -70,7 +70,6 @@ export class UserFormComponent {
     this.user.signIn(val).subscribe({
       next: (res:any) => {
         this.done.emit("success");
-        console.log(this.keepLogged, 'Value of checkbox')
         LoginDataService.login(res.username, res.uuid, this.keepLogged);
         this.spinner.hide();
       },

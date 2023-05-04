@@ -9,7 +9,7 @@ import { LoginDataService } from './services/logindata.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'UI';
+  title = "Tim's multitool";
   islogged = false;
   
   /*
