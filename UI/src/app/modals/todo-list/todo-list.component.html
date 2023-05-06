@@ -26,7 +26,7 @@
             <div class="input-group-text">
               <input class="form-check-input" id="check" type="checkbox" [checked]="element.status == 'DONE'" (click)="done($event, element.id, element.content)">
             </div>
-            <textarea type="text" class="form-control" rows="1" style="resize: none;" [(ngModel)]="element.content" (change)="saveEl(element.id, element.content, element.status)" placeholder="{{'todoForm.non-title' | translate}}"></textarea>
+            <textarea type="text" class="form-control" rows="1" style="resize: none;" [(ngModel)]="element.content" (change)="saveEl(element.id, element.content, element.status)" placeholder="{{'todo.non-title' | translate}}"></textarea>
             <span class="input-group-text">
               <a class="btn" (click)="deleteEl(element.id)">
                 <i class="bi bi-trash"></i>
