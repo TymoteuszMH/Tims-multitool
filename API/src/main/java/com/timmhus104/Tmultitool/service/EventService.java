@@ -9,6 +9,7 @@ import com.timmhus104.Tmultitool.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -46,6 +47,12 @@ public class EventService{
     public List<Event> findEventByUser(UUID userUuid){
         User user = getUser(userUuid);
         return eventRepo.findEventByUser(user);
+    }
+
+    public List<Event> findEventByUserAndDate(UUID userUuid){
+        User user = getUser(userUuid);
+        LocalDate today = LocalDate.now();
+        return eventRepo.findEventByUserAndDate(user, today).orElseThrow(() -> new FileNotFoundException("There is no events today"));
     }
     public void deleteEvent(Long id){
         eventRepo.deleteEventById(id);

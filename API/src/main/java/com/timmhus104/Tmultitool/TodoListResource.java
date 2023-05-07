@@ -27,6 +27,12 @@ public class TodoListResource {
         return new ResponseEntity<>(todoList, HttpStatus.OK);
     }
 
+    @GetMapping("/today")
+    public ResponseEntity<List<TodoList>> getTodoListToday(@PathVariable("userUuid") UUID userUuid) {
+        List<TodoList> todoList = todoListService.findTodoListByUserAndDate(userUuid);
+        return new ResponseEntity<>(todoList, HttpStatus.OK);
+    }
+
     //id is for showing details
     @GetMapping("/id/{id}")
     public ResponseEntity<TodoList> getTodoListById(@PathVariable("id") Long id) {
