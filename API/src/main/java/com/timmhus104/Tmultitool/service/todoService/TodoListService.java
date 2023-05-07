@@ -9,6 +9,7 @@ import com.timmhus104.Tmultitool.repo.todoRepo.TodoListRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -49,6 +50,12 @@ public class TodoListService {
     public List<TodoList> findTodoListByUser(UUID userUuid){
         User user = getUser(userUuid);
         return todoListRepo.findTodoListByUser(user);
+    }
+
+    public List<TodoList> findTodoListByUserAndDate(UUID userUuid){
+        User user = getUser(userUuid);
+        LocalDate today = LocalDate.now();
+        return todoListRepo.findTodoListByUserAndDate(user, today).orElseThrow(() -> new FileNotFoundException("There is no todo today"));
     }
 
     //deleting todolist

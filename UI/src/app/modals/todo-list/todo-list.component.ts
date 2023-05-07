@@ -35,7 +35,6 @@ export class TodoListComponent {
   ngOnInit(){
     this.spinner.show();
     this.id = this.data.id;
-    console.log(this.id, this.data.id)
     this.title = this.data.title;
     if(this.data.date){
       this.date = new Date(this.data.date).toISOString().substring(0, 10);

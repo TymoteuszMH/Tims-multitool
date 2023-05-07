@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { LoginDataService } from './services/logindata.service';
@@ -8,7 +8,7 @@ import { LoginDataService } from './services/logindata.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent{
   title = "Tim's multitool";
   islogged = false;
   

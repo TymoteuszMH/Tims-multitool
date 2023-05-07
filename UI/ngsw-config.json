@@ -7,11 +7,12 @@
       "installMode": "prefetch",
       "resources": {
         "files": [
-          "/icon.ico",
+          "/favicon.png",
           "/index.html",
           "/manifest.webmanifest",
           "/*.css",
-          "/*.js"
+          "/*.js",
+          "/service-worker.js"
         ]
       }
     },

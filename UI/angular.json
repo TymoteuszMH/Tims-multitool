@@ -26,7 +26,8 @@
             "assets": [
               "src/favicon.png",
               "src/assets",
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              "src/service-worker.js"
             ],
             "styles": [
               "node_modules/angular-calendar/css/angular-calendar.css",
@@ -94,7 +95,8 @@
             "assets": [
               "src/favicon.png",
               "src/assets",
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              "src/service-worker.js"
             ],
             "styles": [
               "node_modules/angular-calendar/css/angular-calendar.css",

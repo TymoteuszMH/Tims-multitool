@@ -27,6 +27,12 @@ public class EventResource {
         return new ResponseEntity<>(event, HttpStatus.OK);
     }
 
+    @GetMapping("/today")
+    public ResponseEntity<List<Event>> getEventToday(@PathVariable("userUuid") UUID userUuid) {
+        List<Event> event = eventService.findEventByUserAndDate(userUuid);
+        return new ResponseEntity<>(event, HttpStatus.OK);
+    }
+
     //id is for showing details
     @GetMapping("/id/{id}")
     public ResponseEntity<Event> getEventById(@PathVariable("id") Long id) {
