@@ -40,6 +40,8 @@
     },
     "home":{
         "welcome": "Hello ",
+        "ask":"Do you want to get notifications?",
+        "info":"User blocked notifications. Now you need to enable them manually.",
         "average": "Average",
         "average-desc": "Here you can count your average!",
         "notes":"Notes",

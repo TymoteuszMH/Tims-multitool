@@ -1,6 +1,8 @@
 <div class="container" translate>
     <div class="text-center">
         <h1>{{ 'home.welcome' | translate }}{{login}}!</h1>
+        <button class="btn btn-primary" *ngIf="!askedForNot" (click)="requestNotificationPermission()">{{ 'home.ask' | translate }}</button>
+        <small style="color: red;" *ngIf="info">{{ 'home.info' | translate }}</small>
         <div class="row">
             <a href="/average" class="card col-6 mx-auto">
                 <div class="card-header">

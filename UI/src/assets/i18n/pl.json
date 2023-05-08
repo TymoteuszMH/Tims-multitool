@@ -40,6 +40,8 @@
     },
     "home":{
         "welcome": "Witaj ",
+        "ask":"Czy chcesz dostawać powiadomienia?",
+        "info":"Użytkownik zablokował powiadomienia. Teraz musisz je uruchomić manularnie.",
         "average": "Średnia",
         "average-desc": "Tutaj możesz obliczyć średnią!",
         "notes":"Notatki",
