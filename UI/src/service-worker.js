@@ -1,7 +1,7 @@
 // Pobieranie danych z serwera
 async function getData(uuid) {
-    const events = await push("http://localhost:8080/"+ uuid +"/event/today");
-    const todo = await push("http://localhost:8080/" + uuid +"/todo/today");
+    const events = await push("https://t-mt-backend.fly.dev/"+ uuid +"/event/today");
+    const todo = await push("https://t-mt-backend.fly.dev/" + uuid +"/todo/today");
 }
 
 // Ustawienie Timer API Service Workera
