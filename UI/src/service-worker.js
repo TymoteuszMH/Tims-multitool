@@ -17,10 +17,8 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('push', function(event) {
-    console.log('Push notification received', event);
     if (event.data) {
         const payload = event.data.json();
-        console.log('Payload', payload);
         if(Object.keys(payload).length > 0){
             const now = new Date();
             const hours = now.getHours();
