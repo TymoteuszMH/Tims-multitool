@@ -10,4 +10,5 @@ Ngx spinner - https://github.com/Napster2210/ngx-spinner,
 Ngx translate - https://github.com/ngx-translate/core,
 Angular calendar 15 - https://github.com/mattlewis92/angular-calendar,
 
-Currently I'm working on my own to deploy an app
+You can checkout app on: https://tims-multitool.vercel.app
+Account for testing purposes: login: admin, password: admin, no it doesn't have any special options on site
