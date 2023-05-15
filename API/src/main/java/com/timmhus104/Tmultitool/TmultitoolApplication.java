@@ -13,20 +13,15 @@ public class TmultitoolApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TmultitoolApplication.class, args);
 	}
-
-	@Configuration
-	public class CorsConfig {
-
-		@Bean
-		public WebMvcConfigurer corsConfigurer() {
-			return new WebMvcConfigurer() {
-				@Override
-				public void addCorsMappings(@Nonnull CorsRegistry registry) {
-					registry.addMapping("/**")
-							.allowedOrigins("https://tims-multitool.vercel.app", "https://tims-multitool-git-main-tymoteuszmh.vercel.app", "https://tims-multitool-tymoteuszmh.vercel.app")
-							.allowedMethods("*");
-				}
-			};
-		}
-	}
+  @Bean
+  public WebMvcConfigurer corsConfigurer() {
+    return new WebMvcConfigurer() {
+      @Override
+      public void addCorsMappings(@Nonnull CorsRegistry registry) {
+        registry.addMapping("/**")
+            .allowedOrigins("https://tims-multitool.vercel.app", "https://tims-multitool-git-main-tymoteuszmh.vercel.app", "https://tims-multitool-tymoteuszmh.vercel.app")
+            .allowedMethods("*");
+      }
+    };
+  }
 }

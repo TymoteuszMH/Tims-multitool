@@ -1,7 +1,7 @@
 // Pobieranie danych z serwera
 async function getData(uuid) {
-    const events = await push("http://localhost:8080/"+ uuid +"/event/today");
-    const todo = await push("http://localhost:8080/" + uuid +"/todo/today");
+    const events = await push("https://t-mt-backend.fly.dev/"+ uuid +"/event/today");
+    const todo = await push("https://t-mt-backend.fly.dev/" + uuid +"/todo/today");
 }
 
 // Ustawienie Timer API Service Workera
@@ -17,10 +17,8 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('push', function(event) {
-    console.log('Push notification received', event);
     if (event.data) {
         const payload = event.data.json();
-        console.log('Payload', payload);
         if(Object.keys(payload).length > 0){
             const now = new Date();
             const hours = now.getHours();

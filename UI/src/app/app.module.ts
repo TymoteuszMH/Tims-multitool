@@ -33,9 +33,6 @@ import { TodoListComponent } from './modals/todo-list/todo-list.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-import { api } from '../api';
-import {schedule} from 'node-cron';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,12 +71,14 @@ import {schedule} from 'node-cron';
     CalendarModule.forRoot({ 
       provide: DateAdapter, useFactory: adapterFactory 
     }),
-    ServiceWorkerModule.register('ngsw-worker.js', {}),
+    ServiceWorkerModule.register('service-worker.js', {}),
   ],
   providers: [UserService, EventService, NoteService, TodoService],
   bootstrap: [AppComponent],
 })
+
 export class AppModule {}
+
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
