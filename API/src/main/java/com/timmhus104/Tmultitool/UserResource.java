@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 //user rest controller
-@CrossOrigin(origins = "https://tims-multitool.vercel.app")
 @RestController
 @RequestMapping ("/user")
 public class UserResource {
