@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://tims-multitool.vercel.app")
 @RestController
 @RequestMapping("/{userUuid}/todo-list/{todoListId}/todo-list-element")
 public class TodoElementResource {
