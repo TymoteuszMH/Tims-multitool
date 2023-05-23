@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -71,7 +71,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     CalendarModule.forRoot({ 
       provide: DateAdapter, useFactory: adapterFactory 
     }),
-    ServiceWorkerModule.register('service-worker.js', {}),
+    ServiceWorkerModule.register('ngsw-worker.js', {}),
   ],
   providers: [UserService, EventService, NoteService, TodoService],
   bootstrap: [AppComponent],
