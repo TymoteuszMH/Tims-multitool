@@ -5,12 +5,15 @@
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal(false)"></button>
     </div>
     <div class="modal-body">
-      <form [formGroup]="eventForm" (ngSubmit)="formSubmit()" class="form-gruop row" translate>
-        <label class="col-form-label" for="title">{{ 'eventForm.title' | translate }}</label>
-        <input class="form-control" id="title" type="text" formControlName="title">
-    
-        <label class="col-form-label" for="date">{{ 'eventForm.date' | translate }}</label>
-        <input class="form-control" id="date" type="date" formControlName="date">
+      <form [formGroup]="eventForm" (ngSubmit)="formSubmit()" translate>
+        <div class="form-floating mb-3">
+          <input class="form-control" id="title" type="text" formControlName="title">
+          <label class="col-form-label" for="title">{{ 'eventForm.title' | translate }}</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input class="form-control" id="date" type="date" formControlName="date">
+          <label class="col-form-label" for="date">{{ 'eventForm.date' | translate }}</label>
+        </div>
       <hr>
         <div class="mx-auto text-center">
           <button class="btn btn-primary" type="submit" style="margin-right: 10px" [disabled]="!eventForm.valid">{{ 'eventForm.save' | translate }}</button>

@@ -1,6 +1,11 @@
 <div class="container" translate> 
     <h1 class="input-group input-group-lg">
         <input type="text" class="form-control" style="border: 0;" [(ngModel)]="note.title" (change)="save(note)" placeholder="{{'note.non-title' | translate}}">
+        <div class="float-end">
+            <a class="btn" (click)="deleteNote(note.id)">
+                <i class="bi bi-trash"></i>
+            </a>
+        </div>
     </h1>
     <hr>
     <div class="input-group input-group-sm">

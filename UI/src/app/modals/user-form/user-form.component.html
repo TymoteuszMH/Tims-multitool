@@ -1,4 +1,4 @@
-<form [formGroup]="userForm" (ngSubmit)="formSubmit()" class="form-gruop row" translate>
+<form [formGroup]="userForm" (ngSubmit)="formSubmit()" class="form-floating row" translate>
     <label *ngIf="!pass_check" class="col-form-label" for="username">{{ 'login.username' | translate }}</label>
     <input *ngIf="!pass_check" class="form-control" id="username" type="text" formControlName="username">
 

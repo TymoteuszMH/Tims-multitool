@@ -51,7 +51,7 @@
             [activeDayIsOpen]="activeDayIsOpen"
             [events]="calEvents"
             (dayClicked)="dayClicked($event.day)"
-            (eventClicked)="openModal($event.event)"
+            (eventClicked)="edit($event.event)"
             (eventTimesChanged)="eventTimesChanged($event)">
         </mwl-calendar-month-view>
         <mwl-calendar-week-view

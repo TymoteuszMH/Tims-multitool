@@ -1,6 +1,6 @@
 <div class="container mx-auto">
     <!--form for changing username-->
-    <form [formGroup]="username" (ngSubmit)="editUsername()" class="form-gruop row" translate>
+    <form [formGroup]="username" (ngSubmit)="editUsername()" class="form-floating row" translate>
         <label class="col-form-label" for="username">{{ 'login.username' | translate }}</label>
         <input class="form-control" id="username" type="text" formControlName="username">
         <small style="color: red;" *ngIf="usn_error">
@@ -9,7 +9,7 @@
         <button class="btn btn-primary" type="submit" [disabled]="!username.valid">{{ 'edit.username' | translate }}</button>
     </form>
     <!--form for changing password-->
-    <form [formGroup]="password" (ngSubmit)="editPassword()" class="form-gruop row" translate>
+    <form [formGroup]="password" (ngSubmit)="editPassword()" class="form-floating row" translate>
         <label class="col-form-label" for="password">{{ 'login.password' | translate }}</label>
         <input class="form-control" id="password" type="password" formControlName="password">
         <button class="btn btn-primary" type="submit" [disabled]="!password.valid">{{ 'edit.password' | translate }}</button>

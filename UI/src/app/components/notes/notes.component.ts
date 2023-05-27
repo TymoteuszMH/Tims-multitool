@@ -80,12 +80,13 @@ export class NotesComponent {
       });
     modalRef.result.then((res:boolean)=>{
       if(res){
-        this.spinner.show();
         this.noteService.deleteNote(id).subscribe(()=>{
           this.getNotes();
-          this.spinner.hide();
         });
       }
-    });
+    })
+    .catch(()=>{
+      this.getNotes();
+    })
   }
 }

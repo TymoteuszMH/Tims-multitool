@@ -68,10 +68,13 @@ export class TodoComponent {
         keyboard: false,
       });
     modalRef.componentInstance.data = val;
-    modalRef.result.then((res:boolean)=>{
-      this.spinner.show();
+    modalRef.result
+    .then(()=>{
       this.getTodos();
-    });
+    })
+    .catch(()=>{
+      this.getTodos();
+    })
   }
 
   addTodo(){
@@ -90,14 +93,16 @@ export class TodoComponent {
         centered: true,
         keyboard: false,
       });
-    modalRef.result.then((res:boolean)=>{
+    modalRef.result
+    .then((res:boolean)=>{
       if(res){
-        this.spinner.show();
         this.todoService.deleteTodoList(id).subscribe(()=>{
           this.getTodos();
-          this.spinner.hide();
         });
       }
-    });
+    })
+    .catch(()=>{
+      this.getTodos();
+    })
   }
 }

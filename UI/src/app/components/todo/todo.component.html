@@ -9,20 +9,20 @@
         <div class="col" *ngFor="let todo of todos">
                 <div class="card" style="width: 16rem;">
                     <div class="card-header">
-                        <h3 class="card-title">{{todo.title || 'todo.non-title' | translate}}
-                            <div class="float-end">
-                                <a class="btn" (click)="deleteTodo(todo.id)">
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                            </div>
-                        </h3>
+                        <h4 class="card-title d-inline-block text-truncate" style="max-width: 175px;">{{todo.title || 'todo.non-title' | translate}}</h4>
+                        <div class="float-end">
+                            <a class="btn" (click)="deleteTodo(todo.id)">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </div>
                     </div>
                     <a (click)="showModal(todo)" class="btn card-body">
                         <ol style="color: grey" class="card-text text-start">
-                            <div *ngFor="let element of todo.todoElement.slice(0, 4); let i = index">
-                                <li *ngIf="i < 3">{{element.content}}</li>
+                            <li *ngFor="let element of todo.todoElement.slice(0, 4); let i = index">
+                                <p [className]="element.status == 'DONE' ? 'text-decoration-line-through text-truncate' : 'text-truncate'"
+                                *ngIf="i < 3" >{{element.content}}</p>
                                 <p *ngIf="i >= 3">...</p>
-                            </div>
+                            </li>
                         </ol>
                     </a>
                     <div class="card-footer">
