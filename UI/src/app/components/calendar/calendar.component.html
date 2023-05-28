@@ -40,7 +40,9 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary" (click) = "addEvent()">{{ 'calendar.add' | translate }}</button>
+        <div class="form-group text-center">
+            <button class="btn btn-primary" (click) = "addEvent()">{{ 'calendar.add' | translate }}</button>
+        </div>
     </div>
     <br>
     <div [ngSwitch]="view">

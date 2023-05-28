@@ -1,9 +1,12 @@
-<form [formGroup]="userForm" (ngSubmit)="formSubmit()" class="form-floating row" translate>
-    <label *ngIf="!pass_check" class="col-form-label" for="username">{{ 'login.username' | translate }}</label>
-    <input *ngIf="!pass_check" class="form-control" id="username" type="text" formControlName="username">
-
-    <label class="col-form-label" for="password">{{ 'login.password' | translate }}</label>
-    <input class="form-control" id="password" type="password" formControlName="password">
+<form [formGroup]="userForm" (ngSubmit)="formSubmit()" translate>
+    <div *ngIf="!pass_check" class="form-floating mb-3">
+        <input class="form-control" id="username" type="text" formControlName="username">
+        <label class="col-form-label" for="username">{{ 'login.username' | translate }}</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input class="form-control" id="password" type="password" formControlName="password">
+        <label class="col-form-label" for="password">{{ 'login.password' | translate }}</label>
+    </div>
     <small style="color: red;" *ngIf="pass_error && !login">
         {{ 'login.errors.password' | translate }}
     </small>

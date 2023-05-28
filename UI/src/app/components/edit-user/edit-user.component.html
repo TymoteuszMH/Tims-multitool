@@ -1,18 +1,22 @@
-<div class="container mx-auto">
+<div class="container mx-auto" style="max-width: 24rem;">
     <!--form for changing username-->
-    <form [formGroup]="username" (ngSubmit)="editUsername()" class="form-floating row" translate>
-        <label class="col-form-label" for="username">{{ 'login.username' | translate }}</label>
+    <form [formGroup]="username" (ngSubmit)="editUsername()" class="form-floating mb-3" translate>
         <input class="form-control" id="username" type="text" formControlName="username">
+        <label class="col-form-label" for="username">{{ 'login.username' | translate }}</label>
         <small style="color: red;" *ngIf="usn_error">
             {{ 'login.errors.occupied' | translate }}
         </small>
-        <button class="btn btn-primary" type="submit" [disabled]="!username.valid">{{ 'edit.username' | translate }}</button>
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit" [disabled]="!username.valid">{{ 'edit.username' | translate }}</button>
+        </div>
     </form>
     <!--form for changing password-->
-    <form [formGroup]="password" (ngSubmit)="editPassword()" class="form-floating row" translate>
-        <label class="col-form-label" for="password">{{ 'login.password' | translate }}</label>
+    <form [formGroup]="password" (ngSubmit)="editPassword()" class="form-floating mb-3" translate>
         <input class="form-control" id="password" type="password" formControlName="password">
-        <button class="btn btn-primary" type="submit" [disabled]="!password.valid">{{ 'edit.password' | translate }}</button>
+        <label class="col-form-label" for="password">{{ 'login.password' | translate }}</label>
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit" [disabled]="!password.valid">{{ 'edit.password' | translate }}</button>
+        </div>
     </form>
     <hr>
     <!--delete user button-->
