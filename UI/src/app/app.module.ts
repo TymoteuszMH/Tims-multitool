@@ -32,6 +32,7 @@ import { EventFormComponent } from './modals/event-form/event-form.component';
 import { TodoListComponent } from './modals/todo-list/todo-list.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AutosizeModule } from 'ngx-autosize';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
+    AutosizeModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

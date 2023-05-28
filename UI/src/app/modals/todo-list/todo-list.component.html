@@ -22,37 +22,21 @@
       </form>
       <ol class="container">
         <li *ngFor="let element of todoElements" class="mb-3">
-          <!-- <div class="input-group mb-3">
-            <div class="input-group-text">
-              <input class="form-check-input" id="check" type="checkbox" [checked]="element.status == 'DONE'" (click)="done($event, element.id, element.content)">
-            </div>
-            <textarea rows="1" style="resize: none;" 
-            [(ngModel)]="element.content" 
-            [className]="element.status == 'DONE' ? 'form-control text-decoration-line-through' : 'form-control text-decoration-none'"
-            (change)="saveEl(element.id, element.content, element.status)" 
-            placeholder="{{'todo.non-title' | translate}}">
-            </textarea>
+          <div class="input-group">
+            <span class="input-group-text">
+              <input class="form-check-input" id="check" type="checkbox" 
+              [checked]="element.status == 'DONE'" 
+              (click)="done($event, element.id, element.content)">
+            </span>
+            <textarea placeholder="{{'todo.non-title' | translate}}" rows="1" autosize 
+              [(ngModel)]="element.content" 
+              [className]="element.status == 'DONE' ? 'form-control materialize-textarea text-decoration-line-through' : 'form-control materialize-textarea'"
+              (change)="saveEl(element.id, element.content, element.status)"></textarea>
             <span class="input-group-text">
               <a class="btn" (click)="deleteEl(element.id)">
                 <i class="bi bi-trash"></i>
               </a>
             </span>
-          </div> -->
-          <div class="input-group">
-            <div class="input-group-text">
-              <input class="form-check-input" id="check" type="checkbox" 
-              [checked]="element.status == 'DONE'" 
-              (click)="done($event, element.id, element.content)">
-            </div>
-            <textarea placeholder="{{'todo.non-title' | translate}}" style="resize: none;"
-              [(ngModel)]="element.content" 
-              [className]="element.status == 'DONE' ? 'form-control materialize-textarea text-decoration-line-through' : 'form-control materialize-textarea'"
-              (change)="saveEl(element.id, element.content, element.status)"></textarea>
-            <div class="input-group-text">
-              <a class="btn" (click)="deleteEl(element.id)">
-                <i class="bi bi-trash"></i>
-              </a>
-            </div>
           </div>
         </li>
       </ol>
