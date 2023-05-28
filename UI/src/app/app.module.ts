@@ -73,7 +73,7 @@ import { AutosizeModule } from 'ngx-autosize';
     CalendarModule.forRoot({ 
       provide: DateAdapter, useFactory: adapterFactory 
     }),
-    ServiceWorkerModule.register('ngsw-worker.js', {}),
+    ServiceWorkerModule.register('service-worker.js', {}),
   ],
   providers: [UserService, EventService, NoteService, TodoService],
   bootstrap: [AppComponent],

@@ -1,4 +1,6 @@
 // Pobieranie danych z serwera
+importScripts("https://js.pusher.com/beams/service-worker.js");
+
 async function getData(uuid) {
     const events = await push("https://t-mt-backend.fly.dev/"+ uuid +"/event/today");
     const todo = await push("https://t-mt-backend.fly.dev/" + uuid +"/todo/today");
