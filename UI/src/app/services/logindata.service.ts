@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PusherService } from './pusher.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class LoginDataService {
       localStorage.setItem('uuid', uuid);
       localStorage.setItem('logged', '1');
       localStorage.setItem('keep', '1');
+      PusherService.registerDevice();
     }else{
       sessionStorage.setItem('username', username);
       sessionStorage.setItem('uuid', uuid);
@@ -37,6 +39,7 @@ export class LoginDataService {
     sessionStorage.setItem('uuid','0');
     sessionStorage.setItem('logged','0');
     localStorage.setItem('keep', '0');
+    PusherService.deRegisterDevice();
     LoginDataService.check();
   }
 }
