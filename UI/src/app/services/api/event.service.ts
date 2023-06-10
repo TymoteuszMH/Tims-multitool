@@ -15,7 +15,7 @@ export class EventService {
   @updateEvent: updating existing event by it's id
   @deleteEvent: deleting event by it's id
   */
-  readonly url = api.url + LoginDataService.loginData.uuid + "/event/";
+  readonly url = api.url + LoginDataService.uuid + "/event/";
 
   constructor(private http:HttpClient) { }
   /*

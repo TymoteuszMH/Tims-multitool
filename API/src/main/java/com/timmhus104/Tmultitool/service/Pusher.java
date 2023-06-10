@@ -9,7 +9,6 @@ import com.timmhus104.Tmultitool.repo.EventRepo;
 import com.timmhus104.Tmultitool.repo.UserRepo;
 import com.timmhus104.Tmultitool.repo.todoRepo.TodoListRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -21,9 +20,8 @@ import java.util.*;
 
 @Service
 public class Pusher {
-    private final String instanceId = "2111c416-a6c8-4d12-8036-7dc4e6f2d00c";
-    private final String secretKey = "EE3433B5D84E4D8F3F99A26F1FF395D88D9066158CF010DD8E429156DDA0FD89";
-    private final PushNotifications beamsClient = new PushNotifications(instanceId, secretKey);
+
+    private final PushNotifications beamsClient = new PushNotifications(PusherKeys.instanceId, PusherKeys.secretKey);
     private final UserRepo userRepo;
     private final EventRepo eventRepo;
     private final TodoListRepo todoListRepo;
@@ -48,11 +46,7 @@ public class Pusher {
         Map<String, Map> web = new HashMap<>();
         web.put("notification", webNotification);
         publishRequest.put("web", web);
-        try {
-            beamsClient.publishToInterests(interests, publishRequest);
-        }catch (IllegalArgumentException e){
-            System.out.println("no events");
-        }
+        beamsClient.publishToInterests(interests, publishRequest);
     }
 
     private List<String> getUsers(LocalDate date) {
@@ -80,9 +74,8 @@ public class Pusher {
         return uuids;
     }
 
-    @Bean
     @Scheduled(cron = "0 0 6 * * *")
-    public void onApplicationStart() {
+    public void onApplicationStart(ContextRefreshedEvent event) {
         try {
             sendNotification();
         } catch (IOException | URISyntaxException | InterruptedException e) {

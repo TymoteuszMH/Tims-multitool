@@ -18,7 +18,7 @@ export class NoteService {
   readonly url: string;
 
   constructor(private http:HttpClient) {
-    this.url = api.url + LoginDataService.loginData.uuid + "/note/";}
+    this.url = api.url + LoginDataService.uuid + "/note/";}
   /*
   gets list of an notes
   */

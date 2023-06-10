@@ -15,7 +15,7 @@ export class TodoService {
   @updateTodoList: updating existing todo list by it's id
   @deleteTodoList: deleting todo list by it's id
   */
-  readonly url = api.url + LoginDataService.loginData.uuid + "/todo-list/";
+  readonly url = api.url + LoginDataService.uuid + "/todo-list/";
 
   constructor(private http:HttpClient) { }
   /*

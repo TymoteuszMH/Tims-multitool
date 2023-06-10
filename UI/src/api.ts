@@ -1,3 +1,3 @@
 export const api = {
-  url: "https://t-mt-api.fly.dev/",
+  url: "http://localhost:8080/",
 };

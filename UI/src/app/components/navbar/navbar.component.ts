@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmComponent } from 'src/app/modals/confirm/confirm.component';
 import { ChangeService } from 'src/app/services/change.service';
-import { ILoginData, LoginDataService } from 'src/app/services/logindata.service';
+import { LoginDataService } from 'src/app/services/logindata.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,12 +17,16 @@ export class NavbarComponent {
   @login: getting username
   @logUuid: getting getting logUuid
   */
-  loginData: ILoginData = LoginDataService.loginData;;
+  logged = "";
+  login = ""
+  logUuid = ""
   /*
   @logout: showing confirm modal, logging out after submitting
   */
   ngDoCheck(){
-    this.loginData = LoginDataService.loginData;
+    this.logged = LoginDataService.logged;
+    this.login = LoginDataService.username;
+    this.logUuid = LoginDataService.uuid;
   }
 
   logout(){
