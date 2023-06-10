@@ -9,6 +9,7 @@ import com.timmhus104.Tmultitool.repo.EventRepo;
 import com.timmhus104.Tmultitool.repo.UserRepo;
 import com.timmhus104.Tmultitool.repo.todoRepo.TodoListRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -47,7 +48,11 @@ public class Pusher {
         Map<String, Map> web = new HashMap<>();
         web.put("notification", webNotification);
         publishRequest.put("web", web);
-        beamsClient.publishToInterests(interests, publishRequest);
+        try {
+            beamsClient.publishToInterests(interests, publishRequest);
+        }catch (IllegalArgumentException e){
+            System.out.println("no events");
+        }
     }
 
     private List<String> getUsers(LocalDate date) {
@@ -75,8 +80,9 @@ public class Pusher {
         return uuids;
     }
 
+    @Bean
     @Scheduled(cron = "0 0 6 * * *")
-    public void onApplicationStart(ContextRefreshedEvent event) {
+    public void onApplicationStart() {
         try {
             sendNotification();
         } catch (IOException | URISyntaxException | InterruptedException e) {

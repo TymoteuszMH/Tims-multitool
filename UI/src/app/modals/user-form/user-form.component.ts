@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { login } from 'src/app/interfaces/login';
 import { LoginDataService } from 'src/app/services/logindata.service';
 import { UserService } from 'src/app/services/api/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -30,7 +29,7 @@ export class UserFormComponent {
   pass_error:boolean = false;
 
   userForm = this.fb.group({
-    username: [LoginDataService.username, Validators.required],
+    username: [LoginDataService.loginData.username, Validators.required],
     password: ["", Validators.required],
   });
 

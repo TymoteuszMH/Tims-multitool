@@ -27,7 +27,7 @@ export const logged: Routes = [
 //checking if user is logged, changing site's route
 function CheckLog(){
   LoginDataService.check();
-  if(LoginDataService.logged=='1'){
+  if(LoginDataService.loginData.logged){
     return logged;
   }else{
     return notlogged;

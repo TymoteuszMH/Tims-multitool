@@ -38,12 +38,12 @@ export class UserService {
   request can take password or username, missing value will be added on api
   */
   updateUser(val:any){
-    return this.http.put(this.url + 'update/' + LoginDataService.uuid, val);
+    return this.http.put(this.url + 'update/' + LoginDataService.loginData.uuid, val);
   }
   /*
   delete user needs uuid for deleting current user
   */
   deleteUser(){
-    return this.http.delete(this.url + 'delete/' + LoginDataService.uuid);
+    return this.http.delete(this.url + 'delete/' + LoginDataService.loginData.uuid);
   }
 }

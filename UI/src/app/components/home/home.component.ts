@@ -15,14 +15,9 @@ export class HomeComponent {
   info: boolean = false;
   //check current username
 
-  ngOnInit(){
-    if (Notification.permission === 'granted') {
-      PusherService.registerDevice();
-    }
-  }
-
+  //checking if user granted permission for notifications
   ngDoCheck(){
-    this.login = LoginDataService.username;
+    this.login = LoginDataService.loginData.username || '';
     if (Notification.permission === 'granted') {
       this.askedForNot = true;
     }else if (Notification.permission === 'denied'){
