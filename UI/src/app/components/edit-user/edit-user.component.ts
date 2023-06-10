@@ -21,7 +21,7 @@ export class EditUserComponent {
   @usernem: username field for username form
   @password: password field for password form
   */
-  data:login = {username: LoginDataService.username, password: ""};
+  data:login = {username: LoginDataService.loginData.username || '', password: ""};
   usn_error:boolean = false;
 
   username = this.fb.group({

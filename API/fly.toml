@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for t-mt-backend on 2023-05-08T12:24:31+02:00
+# fly.toml app configuration file generated for t-mt-api on 2023-06-10T18:56:48+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "t-mt-backend"
+app = "t-mt-api"
 primary_region = "waw"
 
 [http_service]

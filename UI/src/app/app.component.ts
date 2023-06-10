@@ -35,7 +35,7 @@ export class AppComponent{
   }
 
   ngDoCheck(){
-    if(LoginDataService.logged=='1')
+    if(LoginDataService.loginData.logged)
       this.islogged = true;
     else
       this.islogged = false;
