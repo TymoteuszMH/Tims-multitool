@@ -19,6 +19,8 @@ Ngx translate - https://github.com/ngx-translate/core,
 
 Angular calendar 15 - https://github.com/mattlewis92/angular-calendar,
 
+Pusher - https://pusher.com/docs/beams/getting-started/web/sdk-integration/
+
 ----------------------------------------------------------------------------
 
 You can checkout app on: https://tims-multitool.vercel.app
