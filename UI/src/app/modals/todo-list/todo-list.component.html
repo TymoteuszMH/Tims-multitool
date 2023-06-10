@@ -4,29 +4,34 @@
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal(false)"></button>
     </div>
     <div class="modal-body">
-      <form [formGroup]="todoForm" class="form-gruop row" translate>
-        <label class="col-form-label" for="title">{{ 'todoForm.title' | translate }}</label>
-        <input type="text" class="form-control" style="border: 0;" formControlName="title" (change)="saveLi()" placeholder="{{'todo.non-title' | translate}}">
-    
-        <label class="col-form-label" for="date">{{ 'todoForm.date' | translate }}</label>
-        <div class="input-group mb-3">
+      <form [formGroup]="todoForm" translate>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" style="border: 0;" formControlName="title" (change)="saveLi()" placeholder="{{'todo.non-title' | translate}}">
+          <label for="title">{{ 'todoForm.title' | translate }}</label>
+        </div>
+        <div class="input-group form-floating mb-3">
           <input class="form-control" id="date" type="date" formControlName="date">
             <span class="input-group-text">
               <a class="btn" (click)="saveLi()">
                 {{ 'todoForm.save-date' | translate }}
               </a>
             </span>
+          <label for="date">{{ 'todoForm.date' | translate }}</label>
         </div>
         <hr>
-        <button type="button" class="btn btn-primary" (click)="addTodoEl()">{{ 'todoForm.addEl' | translate }}</button>
       </form>
       <ol class="container">
-        <li *ngFor="let element of todoElements">
-          <div class="input-group mb-3">
-            <div class="input-group-text">
-              <input class="form-check-input" id="check" type="checkbox" [checked]="element.status == 'DONE'" (click)="done($event, element.id, element.content)">
-            </div>
-            <textarea type="text" class="form-control" rows="1" style="resize: none;" [(ngModel)]="element.content" (change)="saveEl(element.id, element.content, element.status)" placeholder="{{'todo.non-title' | translate}}"></textarea>
+        <li *ngFor="let element of todoElements" class="mb-3">
+          <div class="input-group">
+            <span class="input-group-text">
+              <input class="form-check-input" id="check" type="checkbox" 
+              [checked]="element.status == 'DONE'" 
+              (click)="done($event, element.id, element.content)">
+            </span>
+            <textarea placeholder="{{'todo.non-title' | translate}}" rows="1" autosize 
+              [(ngModel)]="element.content" 
+              [className]="element.status == 'DONE' ? 'form-control materialize-textarea text-decoration-line-through' : 'form-control materialize-textarea'"
+              (change)="saveEl(element.id, element.content, element.status)"></textarea>
             <span class="input-group-text">
               <a class="btn" (click)="deleteEl(element.id)">
                 <i class="bi bi-trash"></i>
@@ -35,5 +40,8 @@
           </div>
         </li>
       </ol>
+      <div class="text-center">
+        <button type="button" class="btn btn-primary" (click)="addTodoEl()">{{ 'todoForm.addEl' | translate }}</button>
+      </div>
     </div>
 </div>

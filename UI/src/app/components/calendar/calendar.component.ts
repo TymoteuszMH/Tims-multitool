@@ -1,16 +1,14 @@
 import { Component, ChangeDetectionStrategy, DoCheck, OnInit } from '@angular/core';
 import { startOfDay, isSameDay,  isSameMonth } from 'date-fns';
-import { Observable, Subject} from 'rxjs';
+import { Subject} from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {  CalendarEvent,  CalendarEventAction,  CalendarEventTimesChangedEvent,  CalendarMonthViewBeforeRenderEvent,  CalendarView,} from 'angular-calendar';
+import {  CalendarEvent,  CalendarEventAction,  CalendarEventTimesChangedEvent,  CalendarView,} from 'angular-calendar';
 import { EventColor } from 'calendar-utils';
 import { EventService } from 'src/app/services/api/event.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { EventFormComponent } from 'src/app/modals/event-form/event-form.component';
 import { ConfirmComponent } from 'src/app/modals/confirm/confirm.component';
-import { Router } from '@angular/router';
 import { TodoService } from 'src/app/services/api/todo.service';
-import { TodoListComponent } from 'src/app/modals/todo-list/todo-list.component';
 
 const colors: Record<string, EventColor> = {
   event: {
@@ -53,14 +51,15 @@ export class CalendarComponent implements OnInit{
       label: '<i class="bi bi-pen"></i>',
       a11yLabel: 'Edit',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.openModal(event);
+        this.edit(event);
       },
     },
     {
       label: '<i class="bi bi-calendar-x"></i>',
       a11yLabel: 'Delete',
       onClick: ({ event }: { event: CalendarEvent }) => {
-        this.openDeleteModal(event)
+        //sending id of selected thing, and checking if it's event or todo to check what should be deleted
+        this.delete(event);
       },
     },
   ];
@@ -86,10 +85,8 @@ export class CalendarComponent implements OnInit{
   @setView: module for calendar module
   @closeOpenMonthViewDay: module for calendar module
   @addEvent: adding new event
-  @editEvent: opens modal for editing event
-  @editTodo: opens modal for editing todo
-  @deleteEvent: opens confirm modal for deleting event
-  @deleteTodo: opens confirm modal for deleting todo
+  @edit: opens modal for editing event or todo depending on color from colors
+  @delete: opens confirm modal for deleting event or todo depending on color from colors
   */
 
   ngOnInit(){
@@ -127,22 +124,6 @@ export class CalendarComponent implements OnInit{
       this.refresh.next();
       this.spinner.hide();
     });
-  }
-
-  openModal(data:any){
-    if(data.color == colors['todo']){
-      this.editTodo(data);
-    }else{
-      this.editEvent(data);
-    }
-  }
-
-  openDeleteModal(data:any){
-    if(data.color == colors['todo']){
-      this.deleteTodo(data.id);
-    }else if ((data.color == colors['event'])){
-      this.deleteEvent(data.id);
-    }
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }){
@@ -187,18 +168,24 @@ export class CalendarComponent implements OnInit{
         centered: true,
         keyboard: false,
       });
-    modalRef.result.then((res:boolean)=>{
-      if(res){
-        this.spinner.show();
-        this.ngOnInit();
-      }
-    });
+    modalRef.result    
+    .then(()=>{
+      this.ngOnInit();
+    })
+    .catch(()=>{
+      this.ngOnInit();
+    })
   }
 
-  editEvent(data:any){
-    var val = {id: data.id,
-      title: data.title,
-      date: data.start}
+  edit(data:any){
+    if(data.color == colors['event'])
+      var val = {id: data.id,
+        title: data.title,
+        date: data.start}
+    else
+      var val = {id: data.id,
+        title: data.title,
+        date: data.start.setDate(data.start.getDate() + 1)}
     const modalRef = this.modalService.open(EventFormComponent,
       {
         scrollable: false,
@@ -207,32 +194,16 @@ export class CalendarComponent implements OnInit{
       });
     modalRef.componentInstance.data = val;
     modalRef.componentInstance.edit = true;
-    modalRef.result.then((res:boolean)=>{
-      if(res){
-        this.spinner.show();
-        this.ngOnInit();
-      }
-    });
-  }
-
-  editTodo(data:any){
-    var val = {id: data.id,
-      title: data.title,
-      date: data.start.setDate(data.start.getDate() + 1)}
-    const modalRef = this.modalService.open(TodoListComponent,
-      {
-        scrollable: false,
-        centered: true,
-        keyboard: false,
-      });
-    modalRef.componentInstance.data = val;
-    modalRef.result.then(()=>{
-      this.spinner.show();
+    modalRef.result
+    .then(()=>{
       this.ngOnInit();
-    });
+    })
+    .catch(()=>{
+      this.ngOnInit();
+    })
   }
 
-  deleteEvent(id: any){
+  delete(data: any){
     const modalRef = this.modalService.open(ConfirmComponent,
       {
         scrollable: false,
@@ -241,28 +212,18 @@ export class CalendarComponent implements OnInit{
       });
     modalRef.result.then((res:boolean)=>{
       if(res){
-        this.spinner.show();
-        this.eventService.deleteEvent(id).subscribe(()=>{
-          this.ngOnInit();
-        }); 
+        if(data.color == colors['event'])
+          this.eventService.deleteEvent(data.id).subscribe(()=>{
+            this.ngOnInit();
+          }); 
+        else
+          this.todoService.deleteTodoList(data.id).subscribe(()=>{
+            this.ngOnInit();
+          }); 
       }
-    });
-  }
-  
-  deleteTodo(id: any){
-    const modalRef = this.modalService.open(ConfirmComponent,
-      {
-        scrollable: false,
-        centered: true,
-        keyboard: false,
-      });
-    modalRef.result.then((res:boolean)=>{
-      if(res){
-        this.spinner.show();
-        this.todoService.deleteTodoList(id).subscribe(()=>{
-          this.ngOnInit();
-        }); 
-      }
-    });
+    })
+    .catch(()=>{
+      this.ngOnInit();
+    })
   }
 }

@@ -66,8 +66,6 @@ export class EditUserComponent {
             this.spinner.hide();
           }
         });
-      }else{
-        
       }
     });
   }
