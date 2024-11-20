@@ -22,9 +22,3 @@ Angular calendar 15 - https://github.com/mattlewis92/angular-calendar,
 Pusher - https://pusher.com/docs/beams/getting-started/web/sdk-integration/
 
 ----------------------------------------------------------------------------
-
-You can checkout app on: https://tims-multitool.vercel.app
-
-Account for testing purposes: login: admin, password: admin, no it doesn't have any special options on site
-
-Because of free hosting of backend and database site may take time to load - don't be harsh, it's trying it's best!
